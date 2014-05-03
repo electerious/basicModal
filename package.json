@@ -1,0 +1,34 @@
+{
+  "name": "basicModal",
+  "version": "1.0.0",
+  "authors": [
+    "Tobias Reich <tobias.reich.ich@gmail.com>"
+  ],
+  "description": "Easy-to-use modal window for your website or webapp",
+  "main": "dist/basicModal.min.js",
+  "keywords": [
+    "modal",
+    "js",
+    "window",
+    "popup"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/electerious/basicModal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "gulp": "^3.6.2",
+    "gulp-coffee": "^1.4.2",
+    "gulp-concat": "^2.2.0",
+    "gulp-load-plugins": "^0.5.0",
+    "gulp-minify-css": "^0.3.4",
+    "gulp-sass": "^0.7.1",
+    "gulp-uglify": "^0.2.1",
+    "gulp-util": "^2.2.14"
+  }
+}

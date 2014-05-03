@@ -1,0 +1,24 @@
+{
+  "name": "basicModal",
+  "version": "1.0.0",
+  "authors": [
+    "Tobias Reich <tobias.reich.ich@gmail.com>"
+  ],
+  "description": "Easy-to-use modal window for your website or webapp",
+  "main": "dist/basicModal.min.js",
+  "keywords": [
+    "modal",
+    "js",
+    "window",
+    "popup"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/electerious/basicModal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
