@@ -19,7 +19,8 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "etc"
   ],
   "devDependencies": {
     "gulp": "^3.6.2",
