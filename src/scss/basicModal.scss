@@ -56,16 +56,26 @@
 	@include vendorize(align-items, center);
 	@include vendorize(box-pack, center);
 	@include vendorize(justify-content, center);
-}
 
 	/* Animations ------------------------------------------------*/
-	.modalContainer.fadeIn {
+	&.fadeIn {
 		@include vendorize(animation, fadeIn $duration $timing);
 	}
 
-	.modalContainer.fadeOut {
+	&.fadeOut {
 		@include vendorize(animation, fadeOut $duration $timing);
 	}
+
+	/* Animations ------------------------------------------------*/
+	&.fadeIn .modal.fadeIn {
+		@include vendorize(animation, moveUpFade $duration $timing);
+	}
+
+	&.fadeIn .modal.shake {
+		@include vendorize(animation, shake $duration $timing);
+	}
+}
+
 
 /* Modal ------------------------------------------------*/
 .modal {
@@ -73,19 +83,9 @@
 	background-color: #fff;
 	border-radius: 3px;
 	box-shadow: 0px 1px 2px rgba(0,0,0,.2);
-}
-
-	/* Animations ------------------------------------------------*/
-	.modalContainer.fadeIn .modal.fadeIn {
-		@include vendorize(animation, moveUpFade $duration $timing);
-	}
-
-	.modalContainer.fadeIn .modal.shake {
-		@include vendorize(animation, shake $duration $timing);
-	}
 
 	/* Text ------------------------------------------------*/
-	.modal p {
+	p {
 		width: calc(100% - 60px);
 		padding: 30px;
 		color: #444;
@@ -94,7 +94,7 @@
 	}
 
 	/* Button ------------------------------------------------*/
-	.modal .button {
+	.button {
 		float: left;
 		width: 28%;
 		margin: 0 1% 1% 1%;
@@ -121,13 +121,13 @@
 		}
 	}
 
-	.modal .button#action {
+	.button#action {
 		width: 69%;
 		margin-left: 0;
 		color: #fff;
 	}
 
-		.modal .button#action.normal {
+		.button#action.normal {
 			background-color: $cMain;
 
 			&:hover {
@@ -140,7 +140,7 @@
 			}
 		}
 
-		.modal .button#action.red {
+		.button#action.red {
 			background-color: $cRed;
 
 			&:hover {
@@ -153,7 +153,7 @@
 			}
 		}
 
-		.modal .button#action.green {
+		.button#action.green {
 			background-color: $cGreen;
 
 			&:hover {
@@ -165,74 +165,4 @@
 				background-color: lighten($cGreen, 10%);
 			}
 		}
-
-	/* Sign In ------------------------------------------------*/
-	.modal.login {
-		max-width: 340px;
-		text-align: center;
-	}
-
-	.modal.login h1,
-	.modal.login h2 {
-		width: 100%;
-		font-weight: 400;
-	}
-
-	.modal.login h1 {
-		margin: 60px 0 0 0;
-		color: rgba(0,0,0,.8);
-		font-size: 28px;
-	}
-
-	.modal.login h2 {
-		margin: 6px 0 30px 0;
-		color: rgba(0,0,0,.4);
-		font-size: 12px;
-	}
-
-	.modal.login p {
-		width: calc(100% - 40px);
-		padding: 10px 20px;
-	}
-
-	.modal.login input.text {
-		float: left;
-		width: calc(90% - 28px);
-		padding: 14px;
-		margin: 0px 5% 1px;
-		background-color: rgba(0,0,0,.05);
-		color: #333;
-		border: none;
-		border-radius: 0px;
-		outline: none;
-		@include vendorize(transition, background-color $sDuration);
-
-		&:focus {
-			background-color: rgba(0, 0, 0, 0.1);
-		}
-
-		&.error {
-			background-color: rgba(255, 36, 16, 0.2);
-		}
-
-		&:first-of-type {
-			margin-top: 27px;
-			border-top-left-radius: 2px;
-			border-top-right-radius: 2px;
-		}
-
-		&:last-of-type {
-			margin-bottom: 34px;
-			border-bottom-left-radius: 2px;
-			border-bottom-right-radius: 2px;
-		}
-	}
-
-	.modal.login .button#action {
-		margin: 0 5% 5%;
-		width: 90%;
-	}
-
-	.modal.login .button#cancel {
-		display: none;
-	}
+}

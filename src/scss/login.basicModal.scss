@@ -1,0 +1,73 @@
+/* Sass ------------------------------------------------*/
+@import 'basics';
+
+/* Login ------------------------------------------------*/
+&.login {
+	max-width: 340px;
+	text-align: center;
+
+	h1,
+	h2 {
+		width: 100%;
+		font-weight: 400;
+	}
+
+	h1 {
+		margin: 60px 0 0 0;
+		color: rgba(0,0,0,.8);
+		font-size: 28px;
+	}
+
+	h2 {
+		margin: 6px 0 30px 0;
+		color: rgba(0,0,0,.4);
+		font-size: 12px;
+	}
+
+	p {
+		width: calc(100% - 40px);
+		padding: 10px 20px;
+	}
+
+	input.text {
+		float: left;
+		width: calc(90% - 28px);
+		padding: 14px;
+		margin: 0px 5% 1px;
+		background-color: rgba(0,0,0,.05);
+		color: #333;
+		border: none;
+		border-radius: 0px;
+		outline: none;
+		@include vendorize(transition, background-color $sDuration);
+
+		&:focus {
+			background-color: rgba(0, 0, 0, 0.1);
+		}
+
+		&.error {
+			background-color: rgba(255, 36, 16, 0.2);
+		}
+
+		&:first-of-type {
+			margin-top: 27px;
+			border-top-left-radius: 2px;
+			border-top-right-radius: 2px;
+		}
+
+		&:last-of-type {
+			margin-bottom: 34px;
+			border-bottom-left-radius: 2px;
+			border-bottom-right-radius: 2px;
+		}
+	}
+
+	.button#action {
+		margin: 0 5% 5%;
+		width: 90%;
+	}
+
+	.button#cancel {
+		display: none;
+	}
+}
