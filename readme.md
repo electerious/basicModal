@@ -36,5 +36,5 @@ modal.show
 			title: 'Reset login'
 			color: 'normal'
 			icon: ''
-			fn: modal.close
+			fn: -> modal.close()
 ```
