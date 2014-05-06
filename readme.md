@@ -2,6 +2,8 @@
 
 Easy-to-use modal window for your website or webapp.
 
+![Modal Screenshot](http://l.electerious.com/uploads/big/b7c495109ae6b213b8367bdd7815c68a.png)
+
 ## Installation
 
 	bower install basicModal
