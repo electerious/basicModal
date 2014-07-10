@@ -25,8 +25,8 @@
 	}
 
 	p {
-		width: calc(100% - 40px);
-		padding: 10px 20px;
+		width: 80%;
+		padding: 10px 10%;
 	}
 
 	input.text {
@@ -56,14 +56,13 @@
 		}
 
 		&:last-of-type {
-			margin-bottom: 34px;
 			border-bottom-left-radius: 2px;
 			border-bottom-right-radius: 2px;
 		}
 	}
 
 	.button#action {
-		margin: 0 5% 5%;
+		margin: 35px 5% 5% 5%;
 		width: 90%;
 	}
 
