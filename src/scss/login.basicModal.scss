@@ -39,7 +39,7 @@
 		border: none;
 		border-radius: 0px;
 		outline: none;
-		@include vendorize(transition, background-color $sDuration);
+		transition: background-color $sDuration;
 
 		&:focus {
 			background-color: rgba(0, 0, 0, 0.1);

@@ -2,7 +2,7 @@
 @import 'basics';
 
 /* Animations ------------------------------------------------*/
-@include keyframes(fadeIn) {
+@keyframes fadeIn {
 	0% {
 		opacity: 0;
 	}
@@ -11,7 +11,7 @@
 	}
 }
 
-@include keyframes(fadeOut) {
+@keyframes fadeOut {
 	0% {
 		opacity: 1;
 	}
@@ -20,24 +20,24 @@
 	}
 }
 
-@include keyframes(moveUpFade) {
+@keyframes moveUpFade {
 	0% {
-		@include vendorize(transform, translateY(80px));
+		transform: translateY(80px);
 	}
 	100% {
-		@include vendorize(transform, translateY(0));
+		transform: translateY(0);
 	}
 }
 
-@include keyframes(shake) {
+@keyframes shake {
 	0%, 100% {
-		@include vendorize(transform, translateX(0));
+		transform: translateX(0);
 	}
 	20%, 60% {
-		@include vendorize(transform, translateX(-10px));
+		transform: translateX(-10px);
 	}
 	40%, 80% {
-		@include vendorize(transform, translateX(10px));
+		transform: translateX(10px);
 	}
 }
 
@@ -48,31 +48,36 @@
 	height: 100%;
 	top: 0px;
 	left: 0px;
-	background-color: black(.4);
+	background-color: rgba(0, 0, 0, .4);
 	z-index: 1000;
 
-	@include flexbox();
-	@include vendorize(box-align, center);
-	@include vendorize(align-items, center);
-	@include vendorize(box-pack, center);
-	@include vendorize(justify-content, center);
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	box-align: center;
+	align-items: center;
+	box-pack: center;
+	justify-content: center;
 
 	/* Animations ------------------------------------------------*/
 	&.fadeIn {
-		@include vendorize(animation, fadeIn $duration $timing);
+		animation: fadeIn $duration $timing;
 	}
 
 	&.fadeOut {
-		@include vendorize(animation, fadeOut $duration $timing);
+		animation: fadeOut $duration $timing;
 	}
 
 	/* Animations ------------------------------------------------*/
 	&.fadeIn .modal.fadeIn {
-		@include vendorize(animation, moveUpFade $duration $timing);
+		animation: moveUpFade $duration $timing;
 	}
 
 	&.fadeIn .modal.shake {
-		@include vendorize(animation, shake $duration $timing);
+		animation: shake $duration $timing;
 	}
 }
 
@@ -99,21 +104,21 @@
 		width: 28%;
 		margin: 0 1% 1% 1%;
 		padding: 13px 0 14px 0;
-		background-color: black(.15);
+		background-color: rgba(0, 0, 0, .15);
 		color: #444;
 		font-weight: bold;
 		text-align: center;
 		cursor: pointer;
 		border-radius: 2px;
-		@include vendorize(transition, background-color $sDuration);
+		transition: background-color $sDuration;
 
 		&:hover {
-			background-color: black(.25);
+			background-color: rgba(0, 0, 0, .25);
 		}
 
 		&:active,
 		&.active {
-			background-color: black(.05);
+			background-color: rgba(0, 0, 0, .05);
 		}
 
 		span {
