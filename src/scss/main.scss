@@ -1,0 +1,13 @@
+/* Colors ------------------------------------------------*/
+$cMain: #CA5858 !default;
+$cRed: #FF2410 !default;
+$cGreen: #09C845 !default;
+
+/* Vars ------------------------------------------------*/
+$duration: .3s !default;
+$sDuration: .2s !default;
+$timing: cubic-bezier(0.51,.92,.24,1.15) !default;
+
+/* Files ------------------------------------------------*/
+@import 'basicModal.scss';
+@import 'login.basicModal.scss';
