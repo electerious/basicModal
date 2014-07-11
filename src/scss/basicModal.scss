@@ -93,6 +93,12 @@
 		color: #444;
 		text-align: center;
 		line-height: 22px;
+
+		a {
+			color: $cMain;
+			text-decoration: none;
+			border-bottom: 1px dashed rgba($cMain, .8);
+		}
 	}
 
 	/* Button ------------------------------------------------*/
