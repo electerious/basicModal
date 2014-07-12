@@ -45,13 +45,13 @@ this.modal =
 			values = {}
 
 			$(".modalContainer input").each ->
-				name	= $(this).data('name')
+				name	= $(this).attr('data-name')
 				value	= $(this).val()
 				values[name] = value
 
 			$(".modalContainer .dropdown").each ->
-				name	= $(this).data('name')
-				value	= $(this).data('value')
+				name	= $(this).attr('data-name')
+				value	= $(this).attr('data-value')
 				values[name] = value
 
 		return values
