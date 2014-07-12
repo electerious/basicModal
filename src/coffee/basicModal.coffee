@@ -50,6 +50,49 @@ this.modal =
 
 		return values
 
+	_bind: (data) ->
+
+		# Bind cancel button
+		if data.buttons?.cancel?.fn?
+			$('.modalContainer #cancel').click data.buttons.cancel.fn
+
+		# Bind action button
+		if data.buttons?.action?.fn?
+			$('.modalContainer #action').click -> data.buttons.action.fn modal._getValues()
+
+		# Bind input
+		$('.modalContainer input').keydown -> $(this).removeClass 'error'
+
+		###
+		# Bind dropdown
+		###
+
+		dropdownTimeout = null
+
+		$('.modal .dropdown .front').click ->
+
+			dropdown = $(this).parent()
+
+			clearTimeout dropdownTimeout
+
+			dropdown.find('.back').show()
+			dropdown.addClass 'flip'
+
+		$('.modal .dropdown .back ul li[class!="separator"]').click ->
+
+			dropdown = $(this).parent().parent().parent()
+
+			value = $(this).clone()
+			value.find('span').remove()
+			value = value.html().trim()
+
+			dropdown.find('.front span').html value
+			dropdown.attr 'data-value', $(this).data('value')
+			dropdown.removeClass 'flip'
+			dropdownTimeout = setTimeout ->
+				dropdown.find('.back').hide()
+			, 3000
+
 	show: (data) ->
 
 		# Validate data
@@ -66,16 +109,8 @@ this.modal =
 		# Build and append
 		$('body').append modal._build(data)
 
-		# Bind cancel button
-		if data.buttons?.cancel?.fn?
-			$('.modalContainer #cancel').click data.buttons.cancel.fn
-
-		# Bind action button
-		if data.buttons?.action?.fn?
-			$('.modalContainer #action').click -> data.buttons.action.fn modal._getValues()
-
-		# Bind inputs
-		$('.modalContainer input').keydown -> $(this).removeClass 'error'
+		# Bind elements
+		modal._bind data
 
 		# Call callback
 		if data.callback?
