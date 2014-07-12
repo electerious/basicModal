@@ -2,30 +2,39 @@ this.modal =
 
 	_valid: (data) ->
 
-		if	data?.body? and
-			data?.closable? and
-			data.buttons?.cancel?.title? and
-			data.buttons?.action?.title? and
-			data.buttons.cancel.fn and
-			data.buttons.action.fn
+		if data?
 
-				data.class = '' if not data.class?
+			# Set defaults
+			data.body = '' if not data.body?
+			data.class = '' if not data.class?
+			data.closable = true if not data.closable?
 
-				return true
+			return true
 
 		return false
 
 	_build: (data) ->
 
-		"""
-		<div class='modalContainer fadeIn' data-closable='#{ data.closable }'>
-			<div class='modal fadeIn #{ data.class }'>
-				#{ data.body }
-				<a id='cancel' class='button'>#{ data.buttons.cancel.title }</a>
-				<a id='action' class='button #{ data.buttons.action.color }'><span class='ion-#{ data.buttons.action.icon }'></span>#{ data.buttons.action.title }</a>
-			</div>
-		</div>
-		"""
+		html =	"""
+				<div class='modalContainer fadeIn' data-closable='#{ data.closable }'>
+					<div class='modal fadeIn #{ data.class }'>
+						#{ data.body }
+				"""
+
+		if data.buttons?.cancel?
+			html += "<a id='cancel' class='button'>#{ data.buttons.cancel.title }</a>"
+
+		if data.buttons?.action?
+			html += "<a id='action' class='button #{ data.buttons.action.color }'>"
+			if data.buttons?.action?.icon? then html += "<span class='#{ data.buttons.action.icon }'></span>"
+			html += "#{ data.buttons.action.title }</a>"
+
+		html +=	"""
+					</div>
+				</div>
+				"""
+
+		return html
 
 	_getValues: ->
 
@@ -44,23 +53,34 @@ this.modal =
 	show: (data) ->
 
 		# Validate data
-		return false if not data? or not modal._valid data
+		return false if not modal._valid data
 
 		# Remove open modal
 		if $(".modalContainer").length isnt 0
 			modal.close true
 			setTimeout ->
 				modal.show data
-			, 300
+			, 301
 			return false
 
 		# Build and append
 		$('body').append modal._build(data)
 
-		# Bind buttons
-		$('.modalContainer #cancel').click data.buttons.cancel.fn
-		$('.modalContainer #action').click -> data.buttons.action.fn modal._getValues()
+		# Bind cancel button
+		if data.buttons?.cancel?.fn?
+			$('.modalContainer #cancel').click data.buttons.cancel.fn
+
+		# Bind action button
+		if data.buttons?.action?.fn?
+			$('.modalContainer #action').click -> data.buttons.action.fn modal._getValues()
+
+		# Bind inputs
 		$('.modalContainer input').keydown -> $(this).removeClass 'error'
+
+		# Call callback
+		if data.callback?
+			callback()
+			return true
 
 		return true
 
