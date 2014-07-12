@@ -40,12 +40,18 @@ this.modal =
 
 		values = null
 
-		if $(".modalContainer input").length isnt 0
+		if $(".modalContainer input, .modalContainer .dropdown").length isnt 0
 
 			values = {}
+
 			$(".modalContainer input").each ->
 				name	= $(this).data('name')
 				value	= $(this).val()
+				values[name] = value
+
+			$(".modalContainer .dropdown").each ->
+				name	= $(this).data('name')
+				value	= $(this).data('value')
 				values[name] = value
 
 		return values
