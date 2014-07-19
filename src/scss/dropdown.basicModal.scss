@@ -8,6 +8,12 @@
 	text-align: left;
 	user-select: none;
 
+	&.required {
+		.front span {
+			color: $cMain;
+		}
+	}
+
 	&.flip {
 		.front {
 			transform: scaleY(0);
