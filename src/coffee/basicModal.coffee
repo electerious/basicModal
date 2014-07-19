@@ -131,10 +131,10 @@ this.modal =
 		$('.modalContainer #action').removeClass 'active'
 
 		# Remove old error
-		$('.modalContainer input').removeClass 'error'
+		$('.modalContainer input, .modalContainer .dropdown').removeClass 'error'
 
 		# Focus input
-		$(".modalContainer input[data-name='#{ input }']")
+		$(".modalContainer input[data-name='#{ input }'], .modalContainer .dropdown[data-name='#{ input }']")
 			.addClass 'error'
 			.focus().select()
 
