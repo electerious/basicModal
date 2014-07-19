@@ -39,16 +39,6 @@
 		transition: transform $sDuration $timing, opacity $sDuration $timing;
 	}
 
-	&:first-of-type .front {
-		border-top-left-radius: 2px;
-		border-top-right-radius: 2px;
-	}
-
-	&:last-of-type .front {
-		border-bottom-left-radius: 2px;
-		border-bottom-right-radius: 2px;
-	}
-
 	.front {
 		height: 46px;
 		background-color: rgba(0, 0, 0, .08);
@@ -71,6 +61,20 @@
 		&:hover {
 			background-color: rgba(0, 0, 0, .13);
 		}
+	}
+
+	&:first-of-type .front {
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+	}
+
+	&:last-of-type .front {
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+	}
+
+	&.error .front {
+		background-color: rgba(255, 36, 16, 0.2);
 	}
 
 	.back {
