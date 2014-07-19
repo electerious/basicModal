@@ -39,22 +39,22 @@
 		transition: transform $sDuration $timing, opacity $sDuration $timing;
 	}
 
+	&:first-of-type .front {
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+	}
+
+	&:last-of-type .front {
+		border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+	}
+
 	.front {
 		height: 46px;
 		background-color: rgba(0, 0, 0, .08);
 		backface-visibility: hidden;
 		cursor: pointer;
 		transition: background-color $sDuration;
-
-		&:first-of-type {
-			border-top-left-radius: 2px;
-			border-top-right-radius: 2px;
-		}
-
-		&:last-of-type {
-			border-bottom-left-radius: 2px;
-			border-bottom-right-radius: 2px;
-		}
 
 		&:after {
 			content:"";
