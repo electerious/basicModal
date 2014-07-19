@@ -31,7 +31,7 @@
 		width: calc(90% - 28px);
 		padding: 14px;
 		margin: 0px 5% 1px;
-		background-color: rgba(0,0,0,.05);
+		background-color: rgba(0,0,0,.08);
 		color: #333;
 		border: none;
 		border-radius: 0px;
@@ -39,7 +39,7 @@
 		transition: background-color $sDuration;
 
 		&:focus {
-			background-color: rgba(0, 0, 0, 0.1);
+			background-color: rgba(0, 0, 0, 0.13);
 		}
 
 		&.error {

@@ -41,10 +41,11 @@
 
 	.front {
 		height: 46px;
-		background-color: rgba(0, 0, 0, .05);
+		background-color: rgba(0, 0, 0, .08);
 		backface-visibility: hidden;
 		border-radius: 2px;
 		cursor: pointer;
+		transition: background-color $sDuration;
 
 		&:after {
 			content:"";
@@ -59,7 +60,7 @@
 		}
 
 		&:hover {
-			background-color: rgba(0, 0, 0, .1);
+			background-color: rgba(0, 0, 0, .13);
 		}
 	}
 
