@@ -23,14 +23,14 @@
     "etc"
   ],
   "devDependencies": {
-    "gulp": "^3.8.6",
+    "gulp": "^3.8.7",
     "gulp-autoprefixer": "0.0.8",
-    "gulp-coffee": "^1.4.3",
-    "gulp-concat": "^2.3.3",
+    "gulp-coffee": "^2.1.1",
+    "gulp-concat": "^2.3.4",
     "gulp-load-plugins": "^0.5.3",
-    "gulp-minify-css": "^0.3.6",
-    "gulp-sass": "^0.7.2",
-    "gulp-uglify": "^0.2.1",
-    "gulp-util": "^2.2.20"
+    "gulp-minify-css": "^0.3.7",
+    "gulp-sass": "^0.7.3",
+    "gulp-uglify": "^0.3.1",
+    "gulp-util": "^3.0.0"
   }
 }
