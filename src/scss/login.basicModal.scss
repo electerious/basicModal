@@ -99,6 +99,6 @@
 		&::after:hover a { color: $cMain; }
 
 		&:active a,
-		&::after:active a { color: darken($cMain, 5%); }
+		&::after:active a { color: darken($cMain, 6%); }
 	}
 }
