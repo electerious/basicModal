@@ -90,12 +90,15 @@
 			position: relative;
 			color: #888;
 			text-decoration: none;
-			line-height: 39px;
+			line-height: 40px;
 			z-index: 1;
 			transition: color $sDuration;
-
-			&:hover { color: $cMain; }
-			&:active { color: darken($cMain, 5%); }
 		}
+
+		&:hover a,
+		&::after:hover a { color: $cMain; }
+
+		&:active a,
+		&::after:active a { color: darken($cMain, 5%); }
 	}
 }
