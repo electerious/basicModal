@@ -22,7 +22,10 @@ this.modal =
 				"""
 
 		if data.buttons?.cancel?
-			html += "<a id='cancel' class='button'>#{ data.buttons.cancel.title }</a>"
+			if data.class.indexOf('login') is -1
+				html += "<a id='cancel' class='button'>#{ data.buttons.cancel.title }</a>"
+			else
+				html += "<div id='cancel' class='button'><a class='ion-close' href='#'></a></div>"
 
 		if data.buttons?.action?
 			html += "<a id='action' class='button #{ data.buttons.action.color }'>"

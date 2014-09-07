@@ -69,7 +69,7 @@
 		margin: 0;
 		padding: 0;
 		width: 40px;
-		height: 340px;
+		height: 40px;
 		background-color: #fff;
 		font-weight: normal;
 		border-radius: 100px;
@@ -81,13 +81,14 @@
 			width: 35px;
 			height: 38px;
 			background: #fff;
-			left: -6px;
+			left: -3px;
 			top: 8px;
 		}
 
 		a {
 			position: relative;
 			color: #888;
+			text-decoration: none;
 			line-height: 39px;
 			z-index: 1;
 			transition: color $sDuration;
