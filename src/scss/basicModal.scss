@@ -59,6 +59,9 @@
 	box-pack: center;
 	justify-content: center;
 
+	box-sizing: content-box;
+	* { box-sizing: content-box; }
+
 	/* Animations ------------------------------------------------*/
 	&.fadeIn {
 		animation: fadeIn $duration $timing;
