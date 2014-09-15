@@ -136,45 +136,20 @@
 	.button#action {
 		width: 69%;
 		margin-left: 0;
+		background-color: $cMain;
 		color: #fff;
+
+		&:hover {
+			background-color: lighten($cMain, 5%);
+		}
+
+		&:active,
+		&.active {
+			background-color: darken($cMain, 5%);
+		}
+
+		&--full {
+			width: 98%;
+		}
 	}
-
-		.button#action.normal {
-			background-color: $cMain;
-
-			&:hover {
-				background-color: lighten($cMain, 5%);
-			}
-
-			&:active,
-			&.active {
-				background-color: darken($cMain, 5%);
-			}
-		}
-
-		.button#action.red {
-			background-color: $cRed;
-
-			&:hover {
-				background-color: lighten($cRed, 5%);
-			}
-
-			&:active,
-			&.active {
-				background-color: darken($cRed, 5%);
-			}
-		}
-
-		.button#action.green {
-			background-color: $cGreen;
-
-			&:hover {
-				background-color: lighten($cGreen, 5%);
-			}
-
-			&:active,
-			&.active {
-				background-color: darken($cGreen, 5%);
-			}
-		}
 }

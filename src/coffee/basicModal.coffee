@@ -4,10 +4,26 @@ this.modal =
 
 		if data?
 
+			###
 			# Set defaults
-			data.body = '' if not data.body?
-			data.class = '' if not data.class?
-			data.closable = true if not data.closable?
+			###
+
+			if not data.body? then		data.body = ''
+			if not data.class? then		data.class = ''
+			if not data.closable? then	data.closable = true
+
+			if data.buttons?.action?
+
+				if not data.buttons.action.class? then	data.buttons.action.class = ''
+				if not data.buttons.action.title? then	data.buttons.action.title = 'OK'
+
+			if data.buttons?.cancel?
+
+				if not data.buttons.cancel.title? then	data.buttons.cancel.title = 'Cancel'
+
+			else
+
+				data.buttons.action.class += ' button--full'
 
 			return true
 
@@ -28,7 +44,7 @@ this.modal =
 				html += "<div id='cancel' class='button'><a class='ion-close' href='#'></a></div>"
 
 		if data.buttons?.action?
-			html += "<a id='action' class='button #{ data.buttons.action.color }'>"
+			html += "<a id='action' class='button #{ data.buttons.action.class }'>"
 			if data.buttons?.action?.icon? then html += "<span class='#{ data.buttons.action.icon }'></span>"
 			html += "#{ data.buttons.action.title }</a>"
 
@@ -146,6 +162,29 @@ this.modal =
 		setTimeout ->
 			$('.modalContainer .modal').addClass 'shake'
 		, 1
+
+	visible: ->
+
+		if $('.modalContainer').length is 0 then return false
+		return true
+
+	action: ->
+
+		if $('.modalContainer .modal #action').length isnt 0
+
+			$('.modalContainer .modal #action').click()
+			return true
+
+		return false
+
+	cancel: ->
+
+		if $('.modalContainer .modal #cancel').length isnt 0
+
+			$('.modalContainer .modal #cancel').click()
+			return true
+
+		return false
 
 	close: (force) ->
 
