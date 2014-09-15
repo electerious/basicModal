@@ -85,6 +85,7 @@
 
 /* Modal ------------------------------------------------*/
 .modal {
+
 	width: 500px;
 	background-color: #fff;
 	border-radius: 3px;
@@ -131,25 +132,27 @@
 		span {
 			margin-right: 10px;
 		}
-	}
 
-	.button#action {
-		width: 69%;
-		margin-left: 0;
-		background-color: $cMain;
-		color: #fff;
+		&#action {
+			width: 69%;
+			margin-left: 0;
+			background-color: $cMain;
+			color: #fff;
 
-		&:hover {
-			background-color: lighten($cMain, 5%);
+			&:hover {
+				background-color: lighten($cMain, 5%);
+			}
+
+			&:active,
+			&.active {
+				background-color: darken($cMain, 5%);
+			}
 		}
 
-		&:active,
-		&.active {
-			background-color: darken($cMain, 5%);
-		}
-
-		&--full {
+		&--full#action {
+			margin: 0 1% 1% 1%;
 			width: 98%;
 		}
 	}
+
 }
