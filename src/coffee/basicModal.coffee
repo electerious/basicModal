@@ -1,5 +1,7 @@
 this.modal =
 
+	lastFocus: null
+
 	_valid: (data) ->
 
 		if data?
@@ -123,6 +125,9 @@ this.modal =
 		# Validate data
 		return false if not modal._valid data
 
+		# Save focused element
+		modal.lastFocus = document.activeElement
+
 		# Remove open modal
 		if $(".modalContainer").length isnt 0
 			modal.close true
@@ -201,8 +206,12 @@ this.modal =
 				$('.modalContainer').removeClass('fadeIn').addClass('fadeOut')
 				setTimeout ->
 					$(".modalContainer").remove()
-					return true
 				, 300
+
+				# Restore last active element
+				if modal.lastFocus?
+					modal.lastFocus.focus()
+					modal.lastFocus = null
 
 				return true
 
