@@ -35,7 +35,7 @@ this.modal =
 
 		html =	"""
 				<div class='modalContainer fadeIn' data-closable='#{ data.closable }'>
-					<div class='modal fadeIn #{ data.class }'>
+					<div class='modal fadeIn #{ data.class }' role="dialog">
 						#{ data.body }
 				"""
 
@@ -43,7 +43,7 @@ this.modal =
 			if data.class.indexOf('login') is -1
 				html += "<a id='cancel' class='button'>#{ data.buttons.cancel.title }</a>"
 			else
-				html += "<div id='cancel' class='button'><a class='ion-close'></a></div>"
+				html += "<div id='cancel' class='button' aria-label='close'><a class='ion-close'></a></div>"
 
 		if data.buttons?.action?
 			html += "<a id='action' class='button #{ data.buttons.action.class }'>"
