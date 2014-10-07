@@ -119,6 +119,7 @@
 		cursor: pointer;
 		border-radius: 2px;
 		transition: background-color $sDuration;
+		user-select: none;
 
 		&:hover {
 			background-color: rgba(0, 0, 0, .08);

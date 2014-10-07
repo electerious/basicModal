@@ -81,7 +81,10 @@ this.modal =
 
 		# Bind cancel button
 		if data.buttons?.cancel?.fn?
-			$('.modalContainer #cancel').click data.buttons.cancel.fn
+			$('.modalContainer #cancel').click ->
+				return false if $(this).hasClass 'active'
+				$(this).addClass 'active'
+				data.buttons.cancel.fn()
 
 		# Bind action button
 		if data.buttons?.action?.fn?
@@ -191,8 +194,8 @@ this.modal =
 
 	reset: ->
 
-		# Reactive button
-		$('.modalContainer #action').removeClass 'active'
+		# Reactive buttons
+		$('.modalContainer .button').removeClass 'active'
 
 		# Remove old error
 		$('.modalContainer input, .modalContainer .dropdown').removeClass 'error'
