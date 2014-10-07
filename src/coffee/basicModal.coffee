@@ -85,7 +85,10 @@ this.modal =
 
 		# Bind action button
 		if data.buttons?.action?.fn?
-			$('.modalContainer #action').click -> data.buttons.action.fn modal._getValues()
+			$('.modalContainer #action').click ->
+				return false if $(this).hasClass 'active'
+				$(this).addClass 'active'
+				data.buttons.action.fn modal._getValues()
 
 		# Bind input
 		$('.modalContainer input').keydown -> $(this).removeClass 'error'
@@ -143,19 +146,14 @@ this.modal =
 		modal._bind data
 
 		# Call callback
-		if data.callback?
-			callback()
-			return true
+		callback() if data.callback?
 
 		return true
 
 	error: (input) ->
 
-		# Reactive button
-		$('.modalContainer #action').removeClass 'active'
-
-		# Remove old error
-		$('.modalContainer input, .modalContainer .dropdown').removeClass 'error'
+		# Reactive buttons and remove old errors
+		modal.reset()
 
 		# Focus input
 		$(".modalContainer input[data-name='#{ input }'], .modalContainer .dropdown[data-name='#{ input }']")
@@ -190,6 +188,16 @@ this.modal =
 			return true
 
 		return false
+
+	reset: ->
+
+		# Reactive button
+		$('.modalContainer #action').removeClass 'active'
+
+		# Remove old error
+		$('.modalContainer input, .modalContainer .dropdown').removeClass 'error'
+
+		return true
 
 	close: (force) ->
 
