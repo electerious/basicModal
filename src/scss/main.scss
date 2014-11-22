@@ -1,12 +1,21 @@
-/* Colors ------------------------------------------------*/
-$cMain: #CA5858 !default;
+/* Colors ----------------------------------------------------*/
+$basicModal__color: #CA5858 !default;
 
-/* Vars ------------------------------------------------*/
-$duration: .3s !default;
-$sDuration: .2s !default;
-$timing: cubic-bezier(0.51,.92,.24,1.15) !default;
+/* Vars ------------------------------------------------------*/
+$basicModal__zIndex:	1000 !default;
+$basicModal__duration:	.3s !default;
+$basicModal__sDuration:	.2s !default;
+$basicModal__timing:	cubic-bezier(.51, .92, .24, 1.15) !default;
 
-/* Files ------------------------------------------------*/
-@import 'basicModal';
-@import 'dropdown.basicModal';
-@import 'login.basicModal';
+/* Files -----------------------------------------------------*/
+@import 'animations';
+@import 'container';
+@import 'modal';
+
+/* Components ------------------------------------------------*/
+@import 'components/text';
+@import 'components/button';
+@import 'components/dropdown';
+
+/* Themes ----------------------------------------------------*/
+@import 'themes/login';

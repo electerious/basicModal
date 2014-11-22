@@ -1,8 +1,9 @@
 /* Dropdown ------------------------------------------------*/
-.modal .dropdown {
+.basicModal .basicModal__dropdown {
+
 	float: left;
 	position: relative;
-	margin: 0px 5% 1px;
+	margin: 0 5% 1px;
 	width: 90%;
 	color: #333;
 	text-align: left;
@@ -35,19 +36,17 @@
 	}
 
 	.front,
-	.back {
-		transition: transform $sDuration $timing, opacity $sDuration $timing;
-	}
+	.back { transition: transform $basicModal__sDuration $basicModal__timing, opacity $basicModal__sDuration $basicModal__timing; }
 
 	.front {
 		height: 46px;
 		background-color: rgba(0, 0, 0, .08);
 		backface-visibility: hidden;
 		cursor: pointer;
-		transition: background-color $sDuration;
+		transition: background-color $basicModal__sDuration;
 
-		&:after {
-			content:"";
+		&::after {
+			content: '';
 			position: absolute;
 			top: 21px;
 			right: 14px;
@@ -58,9 +57,7 @@
 			border-top: 5px solid rgba(0, 0, 0, .5);
 		}
 
-		&:hover {
-			background-color: rgba(0, 0, 0, .13);
-		}
+		&:hover { background-color: rgba(0, 0, 0, .13); }
 	}
 
 	&:first-of-type .front {
@@ -73,9 +70,7 @@
 		border-bottom-right-radius: 2px;
 	}
 
-	&.error .front {
-		background-color: rgba(255, 36, 16, 0.2);
-	}
+	&.error .front { background-color: rgba(255, 36, 16, 0.2); }
 
 	.back {
 		display: none;
@@ -92,12 +87,12 @@
 		width: calc(100% - 28px);
 		padding: 10px 14px;
 		background-color: rgba(255, 255, 255, .98);
-		box-shadow: 0px 1px 2px rgba(0, 0, 0, .5);
+		box-shadow: 0 1px 2px rgba(0, 0, 0, .5);
 		border-radius: 2px;
 		list-style: none;
 
 		li {
-			color: $cMain;
+			color: $basicModal__color;
 			line-height: 30px;
 			cursor: pointer;
 			transition: color .2s;
@@ -112,25 +107,22 @@
 				transition: color .2s;
 			}
 
-			&:last-child span {
-				margin-bottom: 5px;
-			}
+			&:last-child span { margin-bottom: 5px; }
 
 			&.separator {
 				width: 100%;
 				height: 1px;
 				background-color: rgba(0, 0, 0, .1);
-				margin: 6px 0px;
+				margin: 6px 0;
 				cursor: inherit;
 			}
 
 			&:hover {
-				color: darken($cMain, 20%);
+				color: darken($basicModal__color, 20%);
 
-				span {
-					color: rgba(0, 0, 0, .6);
-				}
+				span { color: rgba(0, 0, 0, .6); }
 			}
 		}
 	}
+
 }

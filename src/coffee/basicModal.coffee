@@ -1,4 +1,4 @@
-this.modal =
+this.basicModal =
 
 	lastFocus: null
 
@@ -25,7 +25,7 @@ this.modal =
 
 			else if data.buttons?.action?
 
-				data.buttons.action.class += ' button--full'
+				data.buttons.action.class += ' basicModal__button--full'
 
 			return true
 
@@ -34,19 +34,19 @@ this.modal =
 	_build: (data) ->
 
 		html =	"""
-				<div class='modalContainer fadeIn' data-closable='#{ data.closable }'>
-					<div class='modal fadeIn #{ data.class }' role="dialog">
+				<div class='basicModalContainer fadeIn' data-closable='#{ data.closable }'>
+					<div class='basicModal fadeIn #{ data.class }' role="dialog">
 						#{ data.body }
 				"""
 
 		if data.buttons?.cancel?
 			if data.class.indexOf('login') is -1
-				html += "<a id='cancel' class='button'>#{ data.buttons.cancel.title }</a>"
+				html += "<a id='basicModal__cancel' class='basicModal__button'>#{ data.buttons.cancel.title }</a>"
 			else
-				html += "<div id='cancel' class='button' aria-label='close'><a class='ion-close'></a></div>"
+				html += "<div id='basicModal__cancel' class='basicModal__button' aria-label='close'><a class='ion-close'></a></div>"
 
 		if data.buttons?.action?
-			html += "<a id='action' class='button #{ data.buttons.action.class }'>"
+			html += "<a id='basicModal__action' class='basicModal__button #{ data.buttons.action.class }'>"
 			if data.buttons?.action?.icon? then html += "<span class='#{ data.buttons.action.icon }'></span>"
 			html += "#{ data.buttons.action.title }</a>"
 
@@ -61,16 +61,16 @@ this.modal =
 
 		values = null
 
-		if $(".modalContainer input, .modalContainer .dropdown").length isnt 0
+		if $('.basicModal input, .basicModal .basicModal__dropdown').length isnt 0
 
 			values = {}
 
-			$(".modalContainer input").each ->
+			$('.basicModal input').each ->
 				name	= $(this).attr('data-name')
 				value	= $(this).val()
 				values[name] = value
 
-			$(".modalContainer .dropdown").each ->
+			$('.basicModal .basicModal__dropdown').each ->
 				name	= $(this).attr('data-name')
 				value	= $(this).attr('data-value')
 				values[name] = value
@@ -81,20 +81,20 @@ this.modal =
 
 		# Bind cancel button
 		if data.buttons?.cancel?.fn?
-			$('.modalContainer #cancel').click ->
-				return false if $(this).hasClass 'active'
-				$(this).addClass 'active'
+			$('.basicModal #basicModal__cancel').click ->
+				return false if $(this).hasClass 'basicModal__button--active'
+				$(this).addClass 'basicModal__button--active'
 				data.buttons.cancel.fn()
 
 		# Bind action button
 		if data.buttons?.action?.fn?
-			$('.modalContainer #action').click ->
-				return false if $(this).hasClass 'active'
-				$(this).addClass 'active'
-				data.buttons.action.fn modal._getValues()
+			$('.basicModal #basicModal__action').click ->
+				return false if $(this).hasClass 'basicModal__button--active'
+				$(this).addClass 'basicModal__button--active'
+				data.buttons.action.fn basicModal._getValues()
 
 		# Bind input
-		$('.modalContainer input').keydown -> $(this).removeClass 'error'
+		$('.basicModal input').keydown -> $(this).removeClass 'error'
 
 		###
 		# Bind dropdown
@@ -102,7 +102,7 @@ this.modal =
 
 		dropdownTimeout = null
 
-		$('.modal .dropdown .front').click ->
+		$('.basicModal .basicModal__dropdown .front').click ->
 
 			dropdown = $(this).parent()
 
@@ -111,7 +111,7 @@ this.modal =
 			dropdown.find('.back').show()
 			dropdown.addClass 'flip'
 
-		$('.modal .dropdown .back ul li[class!="separator"]').click ->
+		$('.basicModal .basicModal__dropdown .back ul li[class!="separator"]').click ->
 
 			dropdown = $(this).parent().parent().parent()
 
@@ -129,24 +129,24 @@ this.modal =
 	show: (data) ->
 
 		# Validate data
-		return false if not modal._valid data
+		return false if not basicModal._valid data
 
 		# Save focused element
-		modal.lastFocus = document.activeElement
+		basicModal.lastFocus = document.activeElement
 
 		# Remove open modal
-		if $(".modalContainer").length isnt 0
-			modal.close true
+		if $('.basicModalContainer').length isnt 0
+			basicModal.close true
 			setTimeout ->
-				modal.show data
+				basicModal.show data
 			, 301
 			return false
 
 		# Build and append
-		$('body').append modal._build(data)
+		$('body').append basicModal._build(data)
 
 		# Bind elements
-		modal._bind data
+		basicModal._bind data
 
 		# Call callback
 		callback() if data.callback?
@@ -156,38 +156,38 @@ this.modal =
 	error: (input) ->
 
 		# Reactive buttons and remove old errors
-		modal.reset()
+		basicModal.reset()
 
 		# Focus input
-		$(".modalContainer input[data-name='#{ input }'], .modalContainer .dropdown[data-name='#{ input }']")
+		$(".basicModal input[data-name='#{ input }'], .basicModal .basicModal__dropdown[data-name='#{ input }']")
 			.addClass 'error'
 			.focus().select()
 
 		# Shake
-		$('.modalContainer .modal').removeClass 'fadeIn shake'
+		$('.basicModal').removeClass 'fadeIn shake'
 		setTimeout ->
-			$('.modalContainer .modal').addClass 'shake'
+			$('.basicModal').addClass 'shake'
 		, 1
 
 	visible: ->
 
-		if $('.modalContainer').length is 0 then return false
+		if $('.basicModalContainer').length is 0 then return false
 		return true
 
 	action: ->
 
-		if $('.modalContainer .modal #action').length isnt 0
+		if $('.basicModal #basicModal__action').length isnt 0
 
-			$('.modalContainer .modal #action').click()
+			$('.basicModal #basicModal__action').click()
 			return true
 
 		return false
 
 	cancel: ->
 
-		if $('.modalContainer .modal #cancel').length isnt 0
+		if $('.basicModal #basicModal__cancel').length isnt 0
 
-			$('.modalContainer .modal #cancel').click()
+			$('.basicModal #basicModal__cancel').click()
 			return true
 
 		return false
@@ -195,10 +195,10 @@ this.modal =
 	reset: ->
 
 		# Reactive buttons
-		$('.modalContainer .button').removeClass 'active'
+		$('.basicModal .basicModal__button').removeClass 'basicModal__button--active'
 
 		# Remove old error
-		$('.modalContainer input, .modalContainer .dropdown').removeClass 'error'
+		$('.basicModal input, .basicModal .basicModal__dropdown').removeClass 'error'
 
 		return true
 
@@ -212,17 +212,17 @@ this.modal =
 			force is true
 
 				# Don't close when not closable
-				return false if $('.modalContainer[data-closable=true]').length is 0 and force isnt true
+				return false if $('.basicModalContainer[data-closable=true]').length is 0 and force isnt true
 
-				$('.modalContainer').removeClass('fadeIn').addClass('fadeOut')
+				$('.basicModalContainer').removeClass('fadeIn').addClass('fadeOut')
 				setTimeout ->
-					$(".modalContainer").remove()
+					$('.basicModalContainer').remove()
 				, 300
 
 				# Restore last active element
-				if modal.lastFocus?
-					modal.lastFocus.focus()
-					modal.lastFocus = null
+				if basicModal.lastFocus?
+					basicModal.lastFocus.focus()
+					basicModal.lastFocus = null
 
 				return true
 
