@@ -1,5 +1,6 @@
 /* Login ------------------------------------------------*/
 .basicModal.login {
+
 	position: relative;
 	max-width: 340px;
 	text-align: center;
@@ -54,12 +55,12 @@
 		}
 	}
 
-	.button#action {
+	.basicModal__button#basicModal__action {
 		margin: 35px 5% 5% 5%;
 		width: 90%;
 	}
 
-	.button#cancel {
+	.basicModal__button#basicModal__cancel {
 		position: absolute;
 		top: -8px;
 		right: -8px;
@@ -97,4 +98,5 @@
 		&:active a,
 		&::after:active a { color: darken($basicModal__color, 6%); }
 	}
+
 }
