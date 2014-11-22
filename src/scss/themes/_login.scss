@@ -58,6 +58,16 @@
 	.basicModal__button#basicModal__action {
 		margin: 35px 5% 5% 5%;
 		width: 90%;
+		background-color: $basicModal__color;
+		color: #fff;
+		border: 0;
+		box-shadow: none;
+		border-radius: 2px;
+
+		&:hover { background-color: lighten($basicModal__color, 5%); }
+
+		&:active,
+		&--active { background-color: darken($basicModal__color, 5%); }
 	}
 
 	.basicModal__button#basicModal__cancel {

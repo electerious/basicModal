@@ -34,8 +34,8 @@ this.basicModal =
 	_build: (data) ->
 
 		html =	"""
-				<div class='basicModalContainer fadeIn' data-closable='#{ data.closable }'>
-					<div class='basicModal fadeIn #{ data.class }' role="dialog">
+				<div class='basicModalContainer basicModalContainer--fadeIn' data-closable='#{ data.closable }'>
+					<div class='basicModal basicModal--fadeIn #{ data.class }' role="dialog">
 						#{ data.body }
 				"""
 
@@ -46,9 +46,7 @@ this.basicModal =
 				html += "<div id='basicModal__cancel' class='basicModal__button' aria-label='close'><a class='ion-close'></a></div>"
 
 		if data.buttons?.action?
-			html += "<a id='basicModal__action' class='basicModal__button #{ data.buttons.action.class }'>"
-			if data.buttons?.action?.icon? then html += "<span class='#{ data.buttons.action.icon }'></span>"
-			html += "#{ data.buttons.action.title }</a>"
+			html += "<a id='basicModal__action' class='basicModal__button #{ data.buttons.action.class }'>#{ data.buttons.action.title }</a>"
 
 		html +=	"""
 					</div>
@@ -164,9 +162,9 @@ this.basicModal =
 			.focus().select()
 
 		# Shake
-		$('.basicModal').removeClass 'fadeIn shake'
+		$('.basicModal').removeClass 'basicModal--fadeIn basicModal--shake'
 		setTimeout ->
-			$('.basicModal').addClass 'shake'
+			$('.basicModal').addClass 'basicModal--shake'
 		, 1
 
 	visible: ->
@@ -214,7 +212,7 @@ this.basicModal =
 				# Don't close when not closable
 				return false if $('.basicModalContainer[data-closable=true]').length is 0 and force isnt true
 
-				$('.basicModalContainer').removeClass('fadeIn').addClass('fadeOut')
+				$('.basicModalContainer').removeClass('basicModalContainer--fadeIn').addClass('basicModalContainer--fadeOut')
 				setTimeout ->
 					$('.basicModalContainer').remove()
 				, 300

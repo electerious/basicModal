@@ -25,20 +25,20 @@
 	* { box-sizing: content-box; }
 
 	/* Animations ------------------------------------------------*/
-	&.fadeIn {
+	&--fadeIn {
 		animation: basicModal__fadeIn $basicModal__duration $basicModal__timing;
 	}
 
-	&.fadeOut {
+	&--fadeOut {
 		animation: basicModal__fadeOut $basicModal__duration $basicModal__timing;
 	}
 
 	/* Animations ------------------------------------------------*/
-	&.fadeIn .basicModal.fadeIn {
+	&--fadeIn .basicModal--fadeIn {
 		animation: basicModal__moveUpFade $basicModal__duration $basicModal__timing;
 	}
 
-	&.fadeIn .basicModal.shake {
+	&--fadeIn .basicModal--shake {
 		animation: basicModal__shake $basicModal__duration $basicModal__timing;
 	}
 
