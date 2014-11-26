@@ -1,12 +1,12 @@
 var	gulp = require('gulp'),
-	plugins = require("gulp-load-plugins")();
+	plugins = require('gulp-load-plugins')();
 
 gulp.task('sass', function () {
 
 	gulp.src('./src/scss/main.scss')
 		.pipe(plugins.sass())
 		.pipe(plugins.concat('basicModal.min.css', {newLine: "\n"}))
-		.pipe(plugins.autoprefixer("last 2 version", "> 1%"))
+		.pipe(plugins.autoprefixer('last 2 version', '> 1%'))
 		.pipe(plugins.minifyCss())
 		.pipe(gulp.dest('./dist'));
 
