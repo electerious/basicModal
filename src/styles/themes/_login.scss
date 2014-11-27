@@ -1,5 +1,6 @@
 /* Login ------------------------------------------------*/
-.modal.login {
+.basicModal.login {
+
 	position: relative;
 	max-width: 340px;
 	text-align: center;
@@ -12,13 +13,13 @@
 
 	h1 {
 		margin: 60px 0 0 0;
-		color: rgba(0,0,0,.8);
+		color: rgba(0, 0, 0, .8);
 		font-size: 28px;
 	}
 
 	h2 {
 		margin: 6px 0 30px 0;
-		color: rgba(0,0,0,.4);
+		color: rgba(0, 0, 0, .4);
 		font-size: 12px;
 	}
 
@@ -31,21 +32,17 @@
 		float: left;
 		width: calc(90% - 28px);
 		padding: 14px;
-		margin: 0px 5% 1px;
+		margin: 0 5% 1px;
 		background-color: rgba(0,0,0,.08);
 		color: #333;
 		border: none;
-		border-radius: 0px;
+		border-radius: 0;
 		outline: none;
-		transition: background-color $sDuration;
+		transition: background-color $basicModal__sDuration;
 
-		&:focus {
-			background-color: rgba(0, 0, 0, 0.13);
-		}
+		&:focus { background-color: rgba(0, 0, 0, 0.13); }
 
-		&.error {
-			background-color: rgba(255, 36, 16, 0.2);
-		}
+		&.error { background-color: rgba(255, 36, 16, 0.2); }
 
 		&:first-of-type {
 			border-top-left-radius: 2px;
@@ -58,12 +55,22 @@
 		}
 	}
 
-	.button#action {
+	.basicModal__button#basicModal__action {
 		margin: 35px 5% 5% 5%;
 		width: 90%;
+		background-color: $basicModal__color;
+		color: #fff;
+		border: 0;
+		box-shadow: none;
+		border-radius: 2px;
+
+		&:hover { background-color: lighten($basicModal__color, 5%); }
+
+		&:active,
+		&--active { background-color: darken($basicModal__color, 5%); }
 	}
 
-	.button#cancel {
+	.basicModal__button#basicModal__cancel {
 		position: absolute;
 		top: -8px;
 		right: -8px;
@@ -74,7 +81,7 @@
 		background-color: #fff;
 		font-weight: normal;
 		border-radius: 100px;
-		box-shadow: 0 1px 2px rgba(0,0,0,.2);
+		box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
 
 		&::after {
 			content: '';
@@ -92,13 +99,14 @@
 			text-decoration: none;
 			line-height: 40px;
 			z-index: 1;
-			transition: color $sDuration;
+			transition: color $basicModal__sDuration;
 		}
 
 		&:hover a,
-		&::after:hover a { color: $cMain; }
+		&::after:hover a { color: $basicModal__color; }
 
 		&:active a,
-		&::after:active a { color: darken($cMain, 6%); }
+		&::after:active a { color: darken($basicModal__color, 6%); }
 	}
+
 }
