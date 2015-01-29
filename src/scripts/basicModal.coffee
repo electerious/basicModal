@@ -155,6 +155,9 @@ this.basicModal =
 		# Bind elements
 		basicModal._bind data
 
+		# Select first input
+		basicModal._dom('input')[0].focus()
+
 		# Call callback
 		callback() if data.callback?
 
