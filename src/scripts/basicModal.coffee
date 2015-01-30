@@ -160,7 +160,7 @@ this.basicModal =
 			basicModal._dom('input')[0].focus()
 
 		# Call callback
-		callback() if data.callback?
+		data.callback() if data.callback?
 
 		return true
 
