@@ -38,6 +38,10 @@ this.basicModal =
 
 	_build: (data) ->
 
+		icon =	"""
+				<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M405 136.798l-29.798-29.798-119.202 119.202-119.202-119.202-29.798 29.798 119.202 119.202-119.202 119.202 29.798 29.798 119.202-119.202 119.202 119.202 29.798-29.798-119.202-119.202z"/></svg>
+				"""
+
 		html =	"""
 				<div class='basicModalContainer basicModalContainer--fadeIn' data-closable='#{ data.closable }'>
 					<div class='basicModal basicModal--fadeIn #{ data.class }' role="dialog">
@@ -50,7 +54,7 @@ this.basicModal =
 				html += "<a id='basicModal__cancel' class='basicModal__button'>#{ data.buttons.cancel.title }</a>"
 			else
 				# Custom close-button for the login-theme
-				html += "<div id='basicModal__cancel' class='basicModal__button' aria-label='close'><a class='ion-close'></a></div>"
+				html += "<div id='basicModal__cancel' class='basicModal__button' aria-label='close'>#{ icon }</div>"
 
 		if data.buttons?.action?
 			html += "<a id='basicModal__action' class='basicModal__button #{ data.buttons.action.class }'>#{ data.buttons.action.title }</a>"

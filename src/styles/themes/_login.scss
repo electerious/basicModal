@@ -93,20 +93,20 @@
 			top: 8px;
 		}
 
-		a {
+		svg {
 			position: relative;
-			color: #888;
-			text-decoration: none;
-			line-height: 40px;
+			width: 20px;
+			height: 39px;
+			fill: #888;
 			z-index: 1;
-			transition: color $basicModal__sDuration;
+			transition: fill $basicModal__sDuration;
 		}
 
-		&:hover a,
-		&::after:hover a { color: $basicModal__color; }
+		&:hover svg,
+		&::after:hover svg { fill: $basicModal__color; }
 
-		&:active a,
-		&::after:active a { color: darken($basicModal__color, 6%); }
+		&:active svg,
+		&::after:active svg { fill: darken($basicModal__color, 6%); }
 	}
 
 }
