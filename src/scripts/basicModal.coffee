@@ -161,7 +161,7 @@ this.basicModal =
 
 		# Select first input
 		if basicModal._dom('input').length isnt 0
-			basicModal._dom('input')[0].focus()
+			basicModal._dom('input')[0].select()
 
 		# Call callback
 		data.callback() if data.callback?
