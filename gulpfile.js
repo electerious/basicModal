@@ -14,8 +14,8 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
 
-	gulp.src('./src/scripts/*.coffee')
-		.pipe(plugins.coffee({bare: true}).on('error', plugins.util.log))
+	gulp.src('./src/scripts/*.js')
+		.pipe(plugins.babel())
 		.pipe(plugins.concat('basicModal.min.js', {newLine: "\n"}))
 		.pipe(plugins.uglify())
 		.pipe(gulp.dest('./dist'));
