@@ -1,5 +1,10 @@
 window.basicModal = {
 
+	THEME: {
+		small: 'basicModal__small',
+		xclose: 'basicModal__xclose'
+	},
+
 	_lastFocus: null,
 
 	_dom(elem = '', multiple = false) {
@@ -29,11 +34,6 @@ window.basicModal = {
 			if (data.buttons.cancel.class==null) data.buttons.cancel.class = ''
 			if (data.buttons.cancel.title==null) data.buttons.cancel.title = 'Cancel'
 
-		} else if (data.buttons.action!=null) {
-
-			// Set action button width to 100% when cancel-button missing
-			data.buttons.action.class += ' basicModal__button--full'
-
 		}
 
 		return true
@@ -48,12 +48,15 @@ window.basicModal = {
 		html +=	`
 				<div class='basicModalContainer basicModalContainer--fadeIn' data-closable='${ data.closable }'>
 					<div class='basicModal basicModal--fadeIn ${ data.class }' role="dialog">
-						${ data.body }
+						<div class='basicModal__content'>
+							${ data.body }
+						</div>
+						<div class='basicModal__buttons'>
 				`
 
 		// Cancel-button
 		if (data.buttons.cancel!=null) {
-			if (data.class.indexOf('login')===-1) {
+			if (data.buttons.cancel.class.indexOf('basicModal__xclose')===-1) {
 
 				// Default close-button
 				html +=	`<a id='basicModal__cancel' class='basicModal__button ${ data.buttons.cancel.class }'>${ data.buttons.cancel.title }</a>`
@@ -74,6 +77,7 @@ window.basicModal = {
 		}
 
 		html +=	`
+						</div>
 					</div>
 				</div>
 				`

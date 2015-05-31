@@ -1,16 +1,15 @@
 /* Button ------------------------------------------------*/
-.basicModal .basicModal__button {
+.basicModal__button {
 
-	float: left;
-	width: 30%;
+	width: 100%;
 	padding: 13px 0 14px 0;
 	background-color: rgba(0, 0, 0, .07);
 	color: #444;
 	font-weight: bold;
 	text-align: center;
 	cursor: pointer;
-	border-top: 1px solid rgba(0, 0, 0, .1);
 	transition: background-color $basicModal__sDuration;
+
 	-moz-user-select: none;
 	-webkit-user-select: none;
 	user-select: none;
@@ -18,23 +17,30 @@
 	&:hover { background-color: rgba(0, 0, 0, .02); }
 
 	&:active,
-	&--active { background-color: rgba(0, 0, 0, .12); }
+	&--active {
+		transition: none;
+		background-color: rgba(0, 0, 0, .1);
+	}
 
 	/* Cancel */
-	&#basicModal__cancel { border-radius: 0 0 0 5px; }
+	&#basicModal__cancel {
+		flex-shrink: 2;
+	}
 
 	/* Action */
 	&#basicModal__action {
-		width: 70%;
 		color: $basicModal__color;
-		border-radius: 0 0 5px 0;
 		box-shadow: inset 1px 0 0 rgba(0, 0, 0, .1);
 	}
 
-	&--full#basicModal__action {
-		width: 100%;
-		border-radius: 0 0 5px 5px;
+	/* Remove border when action button is the only button */
+	&#basicModal__action:first-child {
 		box-shadow: none;
 	}
+
+	/* Round edges */
+	&:first-child { border-radius: 0 0 0 5px; }
+
+	&:last-child { border-radius: 0 0 5px; }
 
 }

@@ -1,16 +1,14 @@
 /* Text ------------------------------------------------*/
 .basicModal p {
 
-	width: calc(100% - 60px);
-	padding: 30px;
+	margin: 0 0 5%;
+	width: 100%;
 	color: #444;
 	text-align: center;
 	line-height: 22px;
 
-	a {
-		color: $basicModal__color;
-		text-decoration: none;
-		border-bottom: 1px dashed rgba($basicModal__color, .8);
-	}
+	a { color: $basicModal__color; }
+
+	&:last-child { margin: 0; }
 
 }

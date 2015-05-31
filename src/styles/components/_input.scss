@@ -1,0 +1,20 @@
+/* Input ------------------------------------------------*/
+.basicModal__text {
+	width: 100%;
+	margin: 0 0 1px;
+	padding: 14px;
+	background-color: rgba(0, 0, 0, .08);
+	color: #333;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	transition: background-color $basicModal__sDuration;
+
+	&:focus { background-color: rgba(0, 0, 0, .13); }
+
+	&.error { background-color: rgba(255, 36, 16, .2); }
+
+	&:first-of-type { border-radius: 2px 2px 0 0; }
+
+	&:last-of-type { border-radius: 0 0 2px 2px; }
+}

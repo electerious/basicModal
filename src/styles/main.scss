@@ -13,9 +13,10 @@ $basicModal__timing:	cubic-bezier(.51, .92, .24, 1.15) !default;
 @import 'modal';
 
 /* Components ------------------------------------------------*/
-@import 'components/text';
 @import 'components/button';
-@import 'components/dropdown';
+@import 'components/input';
+@import 'components/text';
 
 /* Themes ----------------------------------------------------*/
-@import 'themes/login';
+@import 'themes/small';
+@import 'themes/xclose';
