@@ -31,7 +31,7 @@ Tested with the latest versions of [Mozilla Firefox](https://www.mozilla.org/en-
 We recommend to install basicModal using [Bower](http://bower.io/) or [NPM](https://npmjs.com).
 
 	bower install basicModal --save
-	npm install basicModal --save
+	npm install basicmodal --save
 	
 ## Requirements
 
@@ -48,10 +48,10 @@ Include the CSS file in the `head` and the JS file at the end of your `body`.
 
 ```html
 <head>
-  <link type="text/css" rel="stylesheet" href="basicModal/dist/basicModal.min.css">
+  <link type="text/css" rel="stylesheet" href="dist/basicModal.min.css">
 </head>
 <body>
-  <script src="basicModal/dist/basicModal.min.js"></script>
+  <script src="dist/basicModal.min.js"></script>
 </body>
 ```
 
