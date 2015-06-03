@@ -20,11 +20,23 @@ window.basicModal = {
 		if (data.class==null)		data.class = ''
 		if (data.closable!==false)	data.closable = true
 
+		if (data.buttons==null) {
+
+			console.error('basicModal requires at least one button')
+			return false
+
+		}
+
 		// Validate action-button
 		if (data.buttons.action!=null) {
 
 			if (data.buttons.action.class==null) data.buttons.action.class = ''
 			if (data.buttons.action.title==null) data.buttons.action.title = 'OK'
+
+			if (data.buttons.action.fn==null) {
+				console.error('Missing fn for action-button')
+				return false
+			}
 
 		}
 
@@ -33,6 +45,11 @@ window.basicModal = {
 
 			if (data.buttons.cancel.class==null) data.buttons.cancel.class = ''
 			if (data.buttons.cancel.title==null) data.buttons.cancel.title = 'Cancel'
+
+			if (data.buttons.cancel.fn==null) {
+				console.error('Missing fn for cancel-button')
+				return false
+			}
 
 		}
 
@@ -163,8 +180,8 @@ window.basicModal = {
 		// Save focused element
 		basicModal._lastFocus = document.activeElement
 
-		// Validate data end set default values
-		basicModal._valid(data)
+		// Validate data and set default values
+		if (basicModal._valid(data)===false) return false
 
 		// Close open modal
 		if (basicModal._dom()!=null) {
