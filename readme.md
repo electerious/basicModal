@@ -78,6 +78,7 @@ List of options you can pass to the `basicModal.show`-function:
 		}
 	}
 }
+```
 
 | Option | Type | Default | Required |
 |:-----------|:------------|:------------|:------------|
