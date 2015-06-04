@@ -1,6 +1,7 @@
 /* Button ------------------------------------------------*/
 .basicModal__button {
 
+	display: inline-block;
 	width: 100%;
 	padding: 13px 0 14px 0;
 	background-color: rgba(0, 0, 0, .07);
@@ -29,6 +30,7 @@
 
 	/* Action */
 	&#basicModal__action {
+		flex-shrink: 1;
 		color: $basicModal__color;
 		box-shadow: inset 1px 0 0 rgba(0, 0, 0, .1);
 	}
