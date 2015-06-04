@@ -293,7 +293,7 @@ window.basicModal = {
 		container.classList.remove('basicModalContainer--fadeIn')
 		container.classList.add('basicModalContainer--fadeOut')
 
-		setTimeout(() => container.remove(), 300)
+		setTimeout(() => container.parentNode.removeChild(container), 300)
 
 		// Restore last active element
 		if (basicModal._lastFocus!=null) {
