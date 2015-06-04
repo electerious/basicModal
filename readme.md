@@ -47,12 +47,8 @@ Some of these APIs are capable of being polyfilled in older browser. Check the l
 Include the CSS file in the `head` and the JS file at the end of your `body`.
 
 ```html
-<head>
-  <link type="text/css" rel="stylesheet" href="dist/basicModal.min.css">
-</head>
-<body>
-  <script src="dist/basicModal.min.js"></script>
-</body>
+<link rel="stylesheet" href="dist/basicModal.min.css">
+<script src="dist/basicModal.min.js"></script>
 ```
 
 ## Functions
