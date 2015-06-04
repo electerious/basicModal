@@ -91,7 +91,7 @@ List of options you can pass to the `basicModal.show`-function:
 basicModal accepts up to two buttons: `cancel` and `action`. Both of them can have the following options:
 
 | Option | Type | Default | Required |
-|:-----------|:------------|:------------|
+|:-----------|:------------|:------------|:------------|
 | title | String | "Cancel" or "OK" | No |
 | class | String | "" | No |
 | fn | Function | undefined | Yes |
