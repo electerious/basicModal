@@ -28,10 +28,10 @@ Tested with the latest versions of [Mozilla Firefox](https://www.mozilla.org/en-
 
 ## Installation
 
-We recommend to install basicModal using [Bower](http://bower.io/) or [NPM](https://npmjs.com).
+We recommend to install basicModal using [Bower](http://bower.io/) or [npm](https://npmjs.com).
 
-	bower install basicModal --save
-	npm install basicmodal --save
+	bower install basicModal
+	npm install basicmodal
 	
 ## Requirements
 
