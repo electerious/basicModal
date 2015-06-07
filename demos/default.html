@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+	<meta charset="utf-8">
+	<title>basicModal Demo</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+	<link rel="stylesheet" href="../dist/basicModal.min.css">
+
+	<style>
+
+		html {
+			width: 100%;
+			height: 100%;
+		}
+
+		body {
+			text-align: center;
+			min-height: 100%;
+			font-size: 14px;
+		}
+
+		a.button {
+			display: inline-block;
+			margin: 50px 0;
+			padding: 6px 10px;
+			background: #2875ed;
+			color: #fff;
+			text-decoration: none;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+	</style>
+
+	<a href="#" class="button popup">Popup</a>
+
+	<a href="#" class="button alert">Alert</a>
+
+	<a href="#" class="button prompt">Prompt</a>
+
+	<a href="#" class="button input">Input</a>
+
+	<script src="../dist/basicModal.min.js"></script>
+
+	<script>
+
+		var popup = {
+			body: '<p>This is a dead-simple popup!<br>The message can be filled with anything you want.</p>',
+			buttons: {
+				cancel: {
+					title: 'Dismiss',
+					class: basicModal.THEME.xclose,
+					fn: basicModal.close
+				}
+			}
+		}
+
+		var alert = {
+			body: '<p>This is a dead-simple alert!<br>The message can be filled with anything you want.</p>',
+			buttons: {
+				action: {
+					title: 'Dismiss',
+					fn: basicModal.close
+				}
+			}
+		}
+
+		var prompt = {
+			body: '<p>This type of modal can be used to ask the user questions. Are you sure you want to continue?</p>',
+			buttons: {
+				cancel: {
+					title: 'Cancel',
+					fn: basicModal.close
+				},
+				action: {
+					title: 'Continue',
+					fn: basicModal.close
+				}
+			}
+		}
+
+		var input = {
+			body: '<p>This type of modal can be used to ask the user questions. Please enter your name:</p><input class="basicModal__text" type="text" name="name" placeholder="Jane Doe">',
+			buttons: {
+				cancel: {
+					title: 'Cancel',
+					fn: basicModal.close
+				},
+				action: {
+					title: 'Continue',
+					fn: function(data) {
+
+						if (data.name.length<1) return basicModal.error('name')
+
+						console.log(data)
+						basicModal.close()
+
+					}
+				}
+			}
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+
+			document.querySelector('a.popup').addEventListener('click', function() { basicModal.show(popup) })
+			document.querySelector('a.alert').addEventListener('click', function() { basicModal.show(alert) })
+			document.querySelector('a.prompt').addEventListener('click', function() { basicModal.show(prompt) })
+			document.querySelector('a.input').addEventListener('click', function() { basicModal.show(input) })
+
+		})
+
+	</script>
+
+</html>
