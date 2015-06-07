@@ -167,7 +167,7 @@ window.basicModal = {
 
 		// Bind input
 		var inputs = basicModal._dom('input', true)
-		for (let i = 0; i < inputs.length; ++i) { inputs[i].keydown = function() { this.classList.remove('error') } }
+		for (let i = 0; i < inputs.length; ++i) { inputs[i].onkeydown = function() { this.classList.remove('error') } }
 
 		return true
 
