@@ -60,38 +60,46 @@ You can find a list of available functions [on our site](http://basicmodal.elect
 List of options you can pass to the `basicModal.show`-function:
 
 ```js
-{
+basicModal.show({
+
+	// String containing HTML (required)
 	body: '<p>String containing HTML</p>',
+	
+	// String - List of custom classes added to the modal (optional)
 	class: 'customClass01 customClass02',
+	
+	// Boolean - Define if the modal can be closed with the close-function (optional)
 	closable: true,
+		
+	// Function - Will fire when modal is visible (optional)
 	callback: undefined,
+	
+	// Object - basicModal accepts up to two buttons and requires at least one of them
 	buttons: {
 		cancel: {
+		
+			// String (optional)
 			title: 'Cancel',
+			
+			// String - List of custom classes added to the button (optional)
 			class: 'customButtonClass',
+			
+			// Function - Will fire when user clicks the button (required)
 			fn: function(data) { console.log(data) }
+			
 		},
 		action: {
+		
+			// String (optional)
 			title: 'OK',
+			
+			// String - List of custom classes added to the button (optional)
 			class: 'customButtonClass',
+			
+			// Function - Will fire when user clicks the button (required)
 			fn: function(data) { console.log(data) }
+			
 		}
 	}
-}
+})
 ```
-
-| Option | Type | Default | Required |
-|:-----------|:------------|:------------|:------------|
-| body | String | "" | No |
-| class | String | "" | No |
-| closable | boolean | true | No |
-| callback | Function | undefined | No |
-| buttons | Object | undefined | Yes |
-
-basicModal accepts up to two buttons: `cancel` and `action`. Both of them can have the following options:
-
-| Option | Type | Default | Required |
-|:-----------|:------------|:------------|:------------|
-| title | String | "Cancel" or "OK" | No |
-| class | String | "" | No |
-| fn | Function | undefined | Yes |
