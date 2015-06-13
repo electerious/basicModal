@@ -37,6 +37,8 @@
 
 	<a href="#" class="button popup">Popup</a>
 
+	<a href="#" class="button callback">Popup + Callback</a>
+
 	<a href="#" class="button alert">Alert</a>
 
 	<a href="#" class="button prompt">Prompt</a>
@@ -51,6 +53,18 @@
 
 		var popup = {
 			body: '<p>This is a dead-simple popup!<br>The message can be filled with anything you want.</p>',
+			buttons: {
+				cancel: {
+					title: 'Dismiss',
+					class: basicModal.THEME.xclose,
+					fn: basicModal.close
+				}
+			}
+		}
+
+		var callback = {
+			body: '<p>Take a look at the console to see if the callback has been executed.</p>',
+			callback: function() { console.log('callback fired') },
 			buttons: {
 				cancel: {
 					title: 'Dismiss',
@@ -139,6 +153,7 @@
 		document.addEventListener('DOMContentLoaded', function() {
 
 			document.querySelector('a.popup').addEventListener('click', function() { basicModal.show(popup) })
+			document.querySelector('a.callback').addEventListener('click', function() { basicModal.show(callback) })
 			document.querySelector('a.alert').addEventListener('click', function() { basicModal.show(alert) })
 			document.querySelector('a.prompt').addEventListener('click', function() { basicModal.show(prompt) })
 			document.querySelector('a.input').addEventListener('click', function() { basicModal.show(input) })
