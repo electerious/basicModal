@@ -76,6 +76,7 @@ basicModal.show({
 	
 	// Object - basicModal accepts up to two buttons and requires at least one of them
 	buttons: {
+	
 		cancel: {
 		
 			// String (optional)
@@ -88,6 +89,7 @@ basicModal.show({
 			fn: function(data) { console.log(data) }
 			
 		},
+		
 		action: {
 		
 			// String (optional)
@@ -100,6 +102,8 @@ basicModal.show({
 			fn: function(data) { console.log(data) }
 			
 		}
+		
 	}
+
 })
 ```
