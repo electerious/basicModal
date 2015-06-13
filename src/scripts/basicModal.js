@@ -1,30 +1,28 @@
 window.basicModal = {
 
 	THEME: {
-		small: 'basicModal__small',
-		xclose: 'basicModal__xclose'
+		small  : 'basicModal__small',
+		xclose : 'basicModal__xclose'
 	},
 
 	_lastFocus: null,
 
 	_dom(elem = '', multiple = false) {
 
-		if (multiple===true)	return document.querySelectorAll('.basicModal ' + elem)
-		else					return document.querySelector('.basicModal ' + elem)
+		if (multiple===true) return document.querySelectorAll('.basicModal ' + elem)
+		else                 return document.querySelector('.basicModal ' + elem)
 
 	},
 
 	_valid(data = {}) {
 
-		if (data.body==null)		data.body = ''
-		if (data.class==null)		data.class = ''
-		if (data.closable!==false)	data.closable = true
+		if (data.body==null)       data.body = ''
+		if (data.class==null)      data.class = ''
+		if (data.closable!==false) data.closable = true
 
 		if (data.buttons==null) {
-
 			console.error('basicModal requires at least one button')
 			return false
-
 		}
 
 		// Validate action-button
@@ -60,16 +58,16 @@ window.basicModal = {
 	_build(data) {
 
 		var icon = '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M405 136.798l-29.798-29.798-119.202 119.202-119.202-119.202-29.798 29.798 119.202 119.202-119.202 119.202 29.798 29.798 119.202-119.202 119.202 119.202 29.798-29.798-119.202-119.202z"/></svg>',
-			html = ''
+		    html = ''
 
-		html +=	`
-				<div class='basicModalContainer basicModalContainer--fadeIn' data-closable='${ data.closable }'>
-					<div class='basicModal basicModal--fadeIn ${ data.class }' role="dialog">
-						<div class='basicModal__content'>
-							${ data.body }
-						</div>
-						<div class='basicModal__buttons'>
-				`
+		html += `
+		        <div class='basicModalContainer basicModalContainer--fadeIn' data-closable='${ data.closable }'>
+		            <div class='basicModal basicModal--fadeIn ${ data.class }' role="dialog">
+		                <div class='basicModal__content'>
+		                    ${ data.body }
+		                </div>
+		                <div class='basicModal__buttons'>
+		        `
 
 		// Cancel-button
 		if (data.buttons.cancel!=null) {
@@ -93,11 +91,11 @@ window.basicModal = {
 
 		}
 
-		html +=	`
-						</div>
-					</div>
-				</div>
-				`
+		html += `
+		                </div>
+		            </div>
+		        </div>
+		        `
 
 		return html
 
@@ -106,7 +104,7 @@ window.basicModal = {
 	getValues() {
 
 		var values = null,
-			inputs = basicModal._dom('input', true)
+		    inputs = basicModal._dom('input', true)
 
 		if (inputs.length>0) {
 
@@ -115,9 +113,9 @@ window.basicModal = {
 			// Get value from all inputs
 			for (let i = 0; i < inputs.length; ++i) {
 
-				let input	= inputs[i],
-					name	= input.getAttribute('name'),
-					value	= input.value
+				let input = inputs[i],
+				    name  = input.getAttribute('name'),
+				    value = input.value
 
 				// Store name and value of input
 				if (name!=null) values[name] = value
@@ -175,7 +173,7 @@ window.basicModal = {
 
 	show(data) {
 
-		if (data==null||Object.keys(data).length===0) return false
+		if (data==null || Object.keys(data).length===0) return false
 
 		// Save focused element
 		basicModal._lastFocus = document.activeElement
@@ -288,7 +286,7 @@ window.basicModal = {
 
 		// Don't close when modal not closable
 		// Use 'force===true' to close unclosebale modal
-		if (container.getAttribute('data-closable')==='false'&&force===false) return false
+		if (container.getAttribute('data-closable')==='false' && force===false) return false
 
 		container.classList.remove('basicModalContainer--fadeIn')
 		container.classList.add('basicModalContainer--fadeOut')
