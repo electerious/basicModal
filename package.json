@@ -1,6 +1,7 @@
 {
   "name": "basicmodal",
-  "version": "3.0.2",
+  "moduleName": "basicModal",
+  "version": "3.1.0",
   "authors": [
     "Tobias Reich <tobias.reich.ich@gmail.com>"
   ],
@@ -27,10 +28,13 @@
     "etc"
   ],
   "devDependencies": {
+    "@electerious/modulizer": "^1.0.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "2.3.1",
     "gulp-babel": "^5.1.0",
     "gulp-concat": "^2.5.2",
+    "gulp-footer": "^1.0.5",
+    "gulp-header": "^1.2.2",
     "gulp-load-plugins": "^1.0.0-rc",
     "gulp-minify-css": "^1.1.6",
     "gulp-sass": "^2.0.1",
