@@ -22,6 +22,7 @@ Tested with the latest versions of [Mozilla Firefox](https://www.mozilla.org/en-
 
 - Works in all modern browsers
 - Zero dependencies
+- CommonJS and AMD support
 - Support for text inputs
 - Highlight invalid input
 - Execute dialogs in row
