@@ -31,7 +31,7 @@ gulp.task('scripts', function() {
 	    .pipe(plugins.footer(foot))
 	    .pipe(plugins.babel())
 	    .pipe(plugins.concat(name + '.min.js', { newLine: "\n" }))
-	    // .pipe(plugins.uglify())
+	    .pipe(plugins.uglify())
 	    .on('error', catchError)
 	    .pipe(gulp.dest('./dist'))
 
