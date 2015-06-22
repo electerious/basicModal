@@ -17,6 +17,7 @@ gulp.task('styles', function() {
 
 	gulp.src('./src/styles/main.scss')
 	    .pipe(plugins.sass())
+	    .on('error', catchError)
 	    .pipe(plugins.concat(name + '.min.css', { newLine: "\n" }))
 	    .pipe(plugins.autoprefixer('last 2 version', '> 1%'))
 	    .pipe(plugins.minifyCss())
