@@ -42,7 +42,7 @@ gulp.task('default', ['styles', 'scripts'])
 
 gulp.task('watch', ['styles', 'scripts'], function() {
 
-	gulp.watch('./src/styles/*.scss', ['styles'])
-	gulp.watch('./src/scripts/*.js', ['scripts'])
+	gulp.watch('./src/styles/**/*.scss', ['styles'])
+	gulp.watch('./src/scripts/**/*.js', ['scripts'])
 
 })
