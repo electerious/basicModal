@@ -1,4 +1,3 @@
-/* Container ------------------------------------------------*/
 .basicModalContainer {
 
 	display: flex;
@@ -20,7 +19,7 @@
 		box-sizing: border-box;
 	}
 
-	/* Animations ------------------------------------------------*/
+	// Overlay Animations --------------------------------------------------------- //
 	&--fadeIn {
 		animation: basicModal__fadeIn $basicModal__duration $basicModal__timing;
 	}
@@ -29,7 +28,7 @@
 		animation: basicModal__fadeOut $basicModal__duration $basicModal__timing;
 	}
 
-	/* Animations ------------------------------------------------*/
+	// Modal Animations ----------------------------------------------------------- //
 	&--fadeIn .basicModal--fadeIn {
 		animation: basicModal__moveUpFade $basicModal__duration $basicModal__timing;
 	}

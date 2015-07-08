@@ -1,4 +1,3 @@
-/* Modal ------------------------------------------------*/
 .basicModal {
 
 	position: relative;
@@ -8,20 +7,16 @@
 	border-radius: 5px;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
 
-}
+	// Content ------------------------------------------------------------ //
+	&__content {
+		padding: 7%;
+	}
 
-/* Content ------------------------------------------------*/
-.basicModal__content {
-
-	padding: 7%;
-
-}
-
-/* Buttons ------------------------------------------------*/
-.basicModal__buttons {
-
-	display: flex;
-	width: 100%;
-	box-shadow: 0 -1px 0 rgba(0, 0, 0, .1);
+	// Buttons ------------------------------------------------------------ //
+	&__buttons {
+		display: flex;
+		width: 100%;
+		box-shadow: 0 -1px 0 rgba(0, 0, 0, .1);
+	}
 
 }
