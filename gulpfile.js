@@ -31,6 +31,7 @@ gulp.task('scripts', function() {
 	    .pipe(plugins.header(head, { name: name }))
 	    .pipe(plugins.footer(foot))
 	    .pipe(plugins.babel())
+	    .on('error', catchError)
 	    .pipe(plugins.concat(name + '.min.js', { newLine: "\n" }))
 	    .pipe(plugins.uglify())
 	    .on('error', catchError)
