@@ -7,6 +7,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
 	<link rel="stylesheet" href="../dist/basicModal.min.css">
 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<style>
 
 		html {
@@ -41,6 +43,8 @@
 	<a href="#" class="button callback">Popup + Callback</a>
 
 	<a href="#" class="button alert">Alert</a>
+
+	<a href="#" class="button longAlert">Long Alert</a>
 
 	<a href="#" class="button prompt">Prompt</a>
 
@@ -77,6 +81,16 @@
 
 		var alert = {
 			body: '<p>This is a dead-simple alert!<br>The message can be filled with anything you want.</p>',
+			buttons: {
+				action: {
+					title: 'Dismiss',
+					fn: basicModal.close
+				}
+			}
+		}
+
+		var longAlert = {
+			body: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id quaerat, autem quia nulla modi esse voluptatum placeat laborum ab. Aliquid iure, saepe totam delectus, debitis nesciunt facilis ex cumque. Obcaecati natus ad asperiores necessitatibus perferendis repellat, vitae quo ex, sapiente officiis, assumenda et ipsam commodi sint blanditiis temporibus inventore? Maiores obcaecati nesciunt perferendis, explicabo, sapiente sed ad veritatis reiciendis, labore iusto fugiat. Optio doloribus, dolor aut! A cumque quam neque corporis, dignissimos earum distinctio aut? Perferendis ipsa dolores, fugiat temporibus asperiores nemo aliquam modi officia animi facere quam tenetur aspernatur quasi quisquam, porro consequatur, iure eos nihil mollitia corporis reiciendis. Aliquid hic, consectetur dignissimos porro quasi atque, animi, quod voluptatem unde ex, iure impedit laborum ad optio debitis delectus iste. Voluptates, dolorem quod sit alias. Quisquam fugit, impedit nam placeat nemo fugiat consequatur, velit error sint vel quaerat repellat quis tenetur? Minus culpa aperiam atque quam dolores suscipit delectus ipsum officia esse, nobis reprehenderit, maiores tempora, pariatur enim, sed blanditiis fuga ad exercitationem quo voluptas. Placeat officiis cum autem molestiae libero, vero quod earum iste ut voluptas ipsam delectus optio aliquam quasi impedit illum magni maxime? Optio aut reprehenderit pariatur saepe quia necessitatibus distinctio, architecto assumenda nihil nesciunt. Quod architecto sapiente officiis dicta corporis vitae quas laboriosam veritatis numquam quae quis obcaecati iste, incidunt natus quisquam! Numquam cum fugiat harum vero ad sit cupiditate possimus, voluptatem ea illo, repellendus provident perferendis iste aut iure esse nobis assumenda natus laboriosam, quidem doloribus nisi saepe accusantium officia. Iste, recusandae, ipsum. Dicta at quia aliquid, fugit tenetur voluptatum ipsa quam explicabo numquam illo reprehenderit voluptas, eius perferendis maxime voluptates ducimus inventore accusantium minima! Eos dolore accusamus, quasi quos, possimus, fuga, qui maiores non consectetur quisquam atque reprehenderit ullam! Quaerat, cupiditate voluptates at eaque, asperiores minima praesentium officiis expedita neque ratione error consequuntur saepe nisi, possimus vitae dicta. Ullam delectus accusantium, ipsam nesciunt, reiciendis corporis tempore sequi quibusdam natus maxime debitis laudantium voluptate ipsum esse tempora. Alias aliquid, rerum quas eius soluta accusamus incidunt ducimus voluptas esse eligendi distinctio hic voluptates odit, natus unde asperiores sit officia velit, corporis placeat consectetur quidem exercitationem. Perspiciatis ex aliquam non soluta vero aliquid corrupti laudantium, animi saepe nemo neque, quia quis magnam id dolores iste dolore, dolor sit quidem veniam impedit consequatur, ullam nostrum expedita? Earum blanditiis nulla ex, facilis! Nihil quae ducimus consectetur aliquam quo deleniti quisquam mollitia aspernatur. Libero commodi, ipsam perspiciatis obcaecati deleniti cupiditate voluptate, ratione explicabo accusantium quis adipisci magnam, sed. Amet, nemo accusantium. Ut veritatis, porro reprehenderit sunt itaque, beatae recusandae distinctio maxime nulla animi ab ullam. Quibusdam accusamus ipsum sunt incidunt, fugit esse necessitatibus optio ducimus odio, non totam numquam, repellat architecto molestias quos? Nulla aliquid enim aliquam sequi accusantium repudiandae hic delectus quam atque dicta soluta fuga blanditiis incidunt esse neque sunt voluptas sint ullam animi illum, repellat eligendi! Temporibus dolorem et ducimus perferendis ea omnis, eligendi placeat maxime sapiente alias repudiandae magni vel veniam illo ex voluptas natus necessitatibus porro sed in magnam accusamus quas dignissimos? Est, id, fuga.</p>',
 			buttons: {
 				action: {
 					title: 'Dismiss',
@@ -156,6 +170,7 @@
 			document.querySelector('a.popup').addEventListener('click', function() { basicModal.show(popup) })
 			document.querySelector('a.callback').addEventListener('click', function() { basicModal.show(callback) })
 			document.querySelector('a.alert').addEventListener('click', function() { basicModal.show(alert) })
+			document.querySelector('a.longAlert').addEventListener('click', function() { basicModal.show(longAlert) })
 			document.querySelector('a.prompt').addEventListener('click', function() { basicModal.show(prompt) })
 			document.querySelector('a.input').addEventListener('click', function() { basicModal.show(input) })
 			document.querySelector('a.login').addEventListener('click', function() { basicModal.show(login) })

@@ -10,6 +10,9 @@
 	// Content ------------------------------------------------------------ //
 	&__content {
 		padding: 7%;
+		max-height: 70vh;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
 	}
 
 	// Buttons ------------------------------------------------------------ //
