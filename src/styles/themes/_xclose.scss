@@ -1,5 +1,6 @@
 // C-Close Button Theme -------------------------------------------------------------- //
 .basicModal__xclose#basicModal__cancel {
+
 	position: absolute;
 	top: -8px;
 	right: -8px;
@@ -35,4 +36,5 @@
 
 	&:active svg,
 	&:after:active svg { fill: darken($basicModal__color, 6%); }
+
 }
