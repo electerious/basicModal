@@ -10,6 +10,19 @@ basicModal is written in Vanilla JS and has zero dependencies. It uses [SASS](ht
 
 Tested with the latest versions of [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/), [Apple Safari](https://www.apple.com/safari/), [Google Chrome](https://www.google.com/chrome/browser/), [Microsoft Internet Explorer](http://windows.microsoft.com/en-us/internet-explorer/download-ie) (10+) and [Opera](http://www.opera.com/).
 
+## Contents
+
+- [Demos](#demos)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Setup](#setup)
+- [How to use](#how-to-use)
+	- [Alert](#alert)
+	- [Prompt](#prompt)
+	- [Input](#input)
+- [Functions](#functions)
+- [Options](#options)
+
 ## Demos
 
 | Name | Description | Link |
@@ -27,13 +40,6 @@ Tested with the latest versions of [Mozilla Firefox](https://www.mozilla.org/en-
 - Highlight invalid input
 - Execute dialogs in row
 
-## Installation
-
-We recommend to install basicModal using [Bower](http://bower.io/) or [npm](https://npmjs.com).
-
-	bower install basicModal
-	npm install basicmodal
-	
 ## Requirements
 
 basicModal dependents on the following browser APIs:
@@ -42,14 +48,96 @@ basicModal dependents on the following browser APIs:
 - [Flexible Box Layout Module](http://caniuse.com/#feat=flexbox)
 
 Some of these APIs are capable of being polyfilled in older browser. Check the linked resources above to determine if you must polyfill to achieve your desired level of browser support.
-	
-## Include
 
-Include the CSS file in the `head` and the JS file at the end of your `body`.
+## Setup
+
+We recommend to install basicModal using [Bower](http://bower.io/) or [npm](https://npmjs.com).
+
+```sh
+bower install basicModal
+```
+```sh
+npm install basicmodal
+```
+
+Include the CSS-file in the `head` and the JS-file at the end of your `body`:
 
 ```html
 <link rel="stylesheet" href="dist/basicModal.min.css">
+```
+```html
 <script src="dist/basicModal.min.js"></script>
+```
+
+Skip the JS-file if you want to use basicModal as module together with [Browserify](http://browserify.org):
+
+```js
+let basicModal = require('basicmodal')
+```
+
+## How to use
+
+### Alert
+
+Lets start with a modal similar to `alert()`. The modal contains a message and a button. The message can be filled with HTML and the button fires the specified function when pressed.
+
+```js
+basicModal.show({
+	body: '<p>This is a dead-simple alert modal!<br>The message can be filled with anything you want.</p>',
+	buttons: {
+		action: {
+			title: 'Dismiss',
+			fn: basicModal.close
+		}
+	}
+})
+```
+
+### Prompt
+
+The prompt dialog is great when you want a decision or answer from the user. The only difference to the first example is the additional button.
+
+```js
+basicModal.show({
+	body: '<p>This type of modal can be used to ask the user questions. Are you sure you want to continue?</p>',
+	buttons: {
+		cancel: {
+			title: 'Cancel',
+			fn: basicModal.close
+		},
+		action: {
+			title: 'Continue',
+			fn: basicModal.close
+		}
+	}
+})
+```
+
+### Input
+
+Building an input-dialog with basicModal is super easy. It includes everything you need, like the ability to highlight invalid fields. The specified action-button-function receives an object which includes the values of all inputs. Use the name attribute in your HTML to set the name of the inputs.
+
+```js
+basicModal.show({
+	body: '<p>This type of modal can be used to ask the user questions. Please enter your name:</p><input class="basicModal__text" type="text" name="name" placeholder="Jane Doe">',
+	buttons: {
+		cancel: {
+			title: 'Cancel',
+			fn: basicModal.close
+		},
+		action: {
+			title: 'Continue',
+			fn: (data) => {
+
+				if (data.name.length===0) return basicModal.error('name')
+
+				console.log(data)
+				basicModal.close()
+
+			}
+		}
+	}
+})
 ```
 
 ## Functions
@@ -87,7 +175,7 @@ basicModal.show({
 			class: 'customButtonClass',
 			
 			// Function - Will fire when user clicks the button (required)
-			fn: function(data) { console.log(data) }
+			fn: basicModal.close
 			
 		},
 		
@@ -100,7 +188,7 @@ basicModal.show({
 			class: 'customButtonClass',
 			
 			// Function - Will fire when user clicks the button (required)
-			fn: function(data) { console.log(data) }
+			fn: (data) => basicModal.close()
 			
 		}
 		
