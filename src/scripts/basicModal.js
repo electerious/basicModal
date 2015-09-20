@@ -1,4 +1,4 @@
-var lastFocus = null
+let lastFocus = null
 
 const THEME = {
 	small  : 'basicModal__small',
@@ -12,7 +12,19 @@ const dom = function(elem = '', multiple = false) {
 
 }
 
-const valid = function(data = {}) {
+const each = (data, fn) => {
+
+	if ((data).constructor===Object) return [].forEach.call(Object.keys(data), (key) => fn(data[key], key, data))
+	else                             return [].forEach.call(data, (item, i) => fn(item, i, data))
+
+}
+
+const valid = function(data) {
+
+	if (data==null || Object.keys(data).length===0) {
+		console.error('Missing or empty modal configuration object')
+		return false
+	}
 
 	if (data.body==null)       data.body = ''
 	if (data.class==null)      data.class = ''
@@ -55,7 +67,7 @@ const valid = function(data = {}) {
 
 const build = function(data) {
 
-	var icon = '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M405 136.798l-29.798-29.798-119.202 119.202-119.202-119.202-29.798 29.798 119.202 119.202-119.202 119.202 29.798 29.798 119.202-119.202 119.202 119.202 29.798-29.798-119.202-119.202z"/></svg>',
+	let icon = '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M405 136.798l-29.798-29.798-119.202 119.202-119.202-119.202-29.798 29.798 119.202 119.202-119.202 119.202 29.798 29.798 119.202-119.202 119.202 119.202 29.798-29.798-119.202-119.202z"/></svg>',
 	    html = ''
 
 	html += `
@@ -101,7 +113,7 @@ const build = function(data) {
 
 const getValues = function() {
 
-	var values = null,
+	let values = null,
 	    inputs = dom('input', true)
 
 	if (inputs.length>0) {
@@ -109,16 +121,15 @@ const getValues = function() {
 		values = {}
 
 		// Get value from all inputs
-		for (let i = 0; i < inputs.length; ++i) {
+		each(inputs, (input) => {
 
-			let input = inputs[i],
-			    name  = input.getAttribute('name'),
+			let name  = input.getAttribute('name'),
 			    value = input.value
 
 			// Store name and value of input
 			if (name!=null) values[name] = value
 
-		}
+		})
 
 		// Set value back to null when object empty
 		if (Object.keys(values).length===0) values = null
@@ -162,19 +173,14 @@ const bind = function(data) {
 	}
 
 	// Bind input
-	var inputs = dom('input', true)
-	for (let i = 0; i < inputs.length; ++i) { inputs[i].onkeydown = function() { this.classList.remove('error') } }
+	let inputs = dom('input', true)
+	each(inputs, (input) => input.onkeydown = function() { this.classList.remove('error') })
 
 	return true
 
 }
 
 const show = function(data) {
-
-	if (data==null || Object.keys(data).length===0) return false
-
-	// Save focused element
-	lastFocus = document.activeElement
 
 	// Validate data and set default values
 	if (valid(data)===false) return false
@@ -186,15 +192,20 @@ const show = function(data) {
 		return false
 	}
 
-	// Build and append modal to DOM
-	var html = build(data)
+	// Save focused element
+	lastFocus = document.activeElement
+
+	// Build modal
+	let html = build(data)
+
+	// Append modal to DOM
 	document.body.insertAdjacentHTML('beforeend', html)
 
 	// Bind elements
 	bind(data)
 
 	// Select the first input when available
-	var input = dom('input')
+	let input = dom('input')
 	if (input!=null) input.select()
 
 	// Execute callback when available
@@ -209,7 +220,7 @@ const error = function(input) {
 	// Reactive buttons and remove old errors
 	reset()
 
-	var elem = dom(`input[name='${ input }']`)
+	let elem = dom(`input[name='${ input }']`)
 
 	elem.classList.add('error')
 	elem.select()
@@ -229,7 +240,7 @@ const visible = function() {
 
 const action = function() {
 
-	var elem = dom('#basicModal__action')
+	let elem = dom('#basicModal__action')
 
 	if (elem!=null) {
 
@@ -244,7 +255,7 @@ const action = function() {
 
 const cancel = function() {
 
-	var elem = dom('#basicModal__cancel')
+	let elem = dom('#basicModal__cancel')
 
 	if (elem!=null) {
 
@@ -260,12 +271,12 @@ const cancel = function() {
 const reset = function() {
 
 	// Reactive buttons
-	var buttons = dom('.basicModal__button', true)
-	for (let i = 0; i < buttons.length; ++i) { buttons[i].classList.remove('basicModal__button--active') }
+	let buttons = dom('.basicModal__button', true)
+	each(buttons, (button) => button.classList.remove('basicModal__button--active'))
 
 	// Remove errors
-	var inputs = dom('input', true)
-	for (let i = 0; i < inputs.length; ++i) { inputs[i].classList.remove('error') }
+	let inputs = dom('input', true)
+	each(inputs, (input) => input.classList.remove('error'))
 
 	return true
 
@@ -280,7 +291,7 @@ const close = function(force) {
 	if (force!==true) force = false
 
 	// Get modal container
-	var container = dom().parentElement
+	let container = dom().parentElement
 
 	// Don't close when modal not closable
 	// Use 'force===true' to close unclosebale modal
@@ -289,7 +300,7 @@ const close = function(force) {
 	container.classList.remove('basicModalContainer--fadeIn')
 	container.classList.add('basicModalContainer--fadeOut')
 
-	setTimeout(() => container.parentNode.removeChild(container), 300)
+	setTimeout(() => container.parentElement.removeChild(container), 300)
 
 	// Restore last active element
 	if (lastFocus!=null) {
