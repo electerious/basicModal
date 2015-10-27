@@ -172,9 +172,12 @@ const bind = function(data) {
 
 	}
 
-	// Bind input
-	let inputs = dom('input', true)
-	each(inputs, (input) => input.onkeydown = function() { this.classList.remove('error') })
+	// Bind inputs
+	each(dom('input', true), (input) => {
+
+		input.onkeydown = input.onblur = function() { this.classList.remove('error') }
+
+	})
 
 	return true
 
