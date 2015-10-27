@@ -303,7 +303,15 @@ const close = function(force) {
 	container.classList.remove('basicModalContainer--fadeIn')
 	container.classList.add('basicModalContainer--fadeOut')
 
-	setTimeout(() => container.parentElement.removeChild(container), 300)
+	setTimeout(() => {
+
+		// Only close when container exists
+		if (container==null)               return false
+		if (container.parentElement==null) return false
+
+		container.parentElement.removeChild(container)
+
+	}, 300)
 
 	// Restore last active element
 	if (lastFocus!=null) {
