@@ -1,6 +1,6 @@
 let lastFocus = null
 
-const THEME = {
+export const THEME = {
 	small  : 'basicModal__small',
 	xclose : 'basicModal__xclose'
 }
@@ -111,7 +111,7 @@ const build = function(data) {
 
 }
 
-const getValues = function() {
+export const getValues = function() {
 
 	let values = null,
 	    inputs = dom('input', true)
@@ -175,7 +175,7 @@ const bind = function(data) {
 	// Bind inputs
 	each(dom('input', true), (input) => {
 
-		input.onkeydown = input.onblur = function() { this.classList.remove('error') }
+		input.oninput = input.onblur = function() { this.classList.remove('error') }
 
 	})
 
@@ -183,7 +183,7 @@ const bind = function(data) {
 
 }
 
-const show = function(data) {
+export const show = function(data) {
 
 	// Validate data and set default values
 	if (valid(data)===false) return false
@@ -218,7 +218,7 @@ const show = function(data) {
 
 }
 
-const error = function(input) {
+export const error = function(input) {
 
 	// Reactive buttons and remove old errors
 	reset()
@@ -234,14 +234,14 @@ const error = function(input) {
 
 }
 
-const visible = function() {
+export const visible = function() {
 
 	if (dom()!=null) return true
 	return false
 
 }
 
-const action = function() {
+export const action = function() {
 
 	let elem = dom('#basicModal__action')
 
@@ -256,7 +256,7 @@ const action = function() {
 
 }
 
-const cancel = function() {
+export const cancel = function() {
 
 	let elem = dom('#basicModal__cancel')
 
@@ -271,7 +271,7 @@ const cancel = function() {
 
 }
 
-const reset = function() {
+export const reset = function() {
 
 	// Reactive buttons
 	let buttons = dom('.basicModal__button', true)
@@ -285,7 +285,7 @@ const reset = function() {
 
 }
 
-const close = function(force) {
+export const close = function(force) {
 
 	// Only close when a modal is visible
 	if (visible()===false) return false
@@ -321,16 +321,4 @@ const close = function(force) {
 
 	return true
 
-}
-
-return {
-	THEME,
-	show,
-	visible,
-	getValues,
-	action,
-	cancel,
-	error,
-	reset,
-	close
 }

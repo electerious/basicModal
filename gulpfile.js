@@ -1,19 +1,43 @@
-var	name    = require('./package.json').moduleName,
-    fs      = require('fs'),
-    gulp    = require('gulp'),
-    plugins = require('gulp-load-plugins')()
+'use strict'
 
-var head = fs.readFileSync('./node_modules/@electerious/modulizer/head.js', { encoding: 'utf8' }),
-    foot = fs.readFileSync('./node_modules/@electerious/modulizer/foot.js', { encoding: 'utf8' })
+let	name       = require('./package.json').moduleName,
+    gulp       = require('gulp'),
+    browserify = require('browserify'),
+    babelify   = require('babelify'),
+    source     = require('vinyl-source-stream'),
+    buffer     = require('vinyl-buffer'),
+    plugins    = require('gulp-load-plugins')()
 
-var catchError = function(err) {
+const catchError = function(err) {
 
 	console.log(err.toString())
 	this.emit('end')
 
 }
 
-gulp.task('styles', function() {
+const scripts = function() {
+
+	let bify = browserify({
+		entries    : './src/scripts/main.js',
+		standalone : name
+	})
+
+	let transformer = babelify.configure({
+		presets: ['es2015']
+	})
+
+	bify.transform(transformer)
+	    .bundle()
+	    .on('error', catchError)
+	    .pipe(source(name + '.min.js'))
+	    .pipe(buffer())
+	    .pipe(plugins.uglify())
+	    .on('error', catchError)
+	    .pipe(gulp.dest('./dist'))
+
+}
+
+const styles = function() {
 
 	gulp.src('./src/styles/main.scss')
 	    .pipe(plugins.sass())
@@ -23,27 +47,16 @@ gulp.task('styles', function() {
 	    .pipe(plugins.minifyCss())
 	    .pipe(gulp.dest('./dist'))
 
-})
+}
 
-gulp.task('scripts', function() {
-
-	gulp.src('./src/scripts/*.js')
-	    .pipe(plugins.header(head, { name: name }))
-	    .pipe(plugins.footer(foot))
-	    .pipe(plugins.babel())
-	    .on('error', catchError)
-	    .pipe(plugins.concat(name + '.min.js', { newLine: "\n" }))
-	    .pipe(plugins.uglify())
-	    .on('error', catchError)
-	    .pipe(gulp.dest('./dist'))
-
-})
-
-gulp.task('default', ['styles', 'scripts'])
-
-gulp.task('watch', ['styles', 'scripts'], function() {
+const watch = function() {
 
 	gulp.watch('./src/styles/**/*.scss', ['styles'])
 	gulp.watch('./src/scripts/**/*.js', ['scripts'])
 
-})
+}
+
+gulp.task('scripts', scripts)
+gulp.task('styles', styles)
+gulp.task('default', ['styles', 'scripts'])
+gulp.task('watch', ['default'], watch)
