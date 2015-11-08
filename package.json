@@ -28,7 +28,7 @@
     "etc"
   ],
   "devDependencies": {
-    "@electerious/basictasks": "0.0.5",
+    "@electerious/basictasks": "1.0.0",
     "gulp": "^3.9.0"
   }
 }
