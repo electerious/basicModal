@@ -10,7 +10,7 @@ const scripts = tasks.scripts('./src/scripts/main.js')
 
 const styles = tasks.styles('./src/styles/main.scss')
 
-const watch = tasks.watch('./src/**/*.[scss, js]', ['scripts', 'styles'])
+const watch = tasks.watch('./src/**/*[.scss, .js]', ['scripts', 'styles'])
 
 gulp.task('scripts', scripts)
 gulp.task('styles', styles)
