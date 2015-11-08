@@ -2,59 +2,15 @@
 
 let name       = require('./package.json').moduleName,
     gulp       = require('gulp'),
-    browserify = require('browserify'),
-    babelify   = require('babelify'),
-    source     = require('vinyl-source-stream'),
-    buffer     = require('vinyl-buffer'),
-    plugins    = require('gulp-load-plugins')()
+    tasks      = require('@electerious/basictasks')(gulp, name)
 
-const catchError = function(err) {
+const catchError = tasks.catchError()
 
-	console.log(err.toString())
-	this.emit('end')
+const scripts = tasks.scripts('./src/scripts/main.js')
 
-}
+const styles = tasks.styles('./src/styles/main.scss')
 
-const scripts = function() {
-
-	let bify = browserify({
-		entries    : './src/scripts/main.js',
-		standalone : name
-	})
-
-	let transformer = babelify.configure({
-		presets: ['es2015']
-	})
-
-	bify.transform(transformer)
-	    .bundle()
-	    .on('error', catchError)
-	    .pipe(source(name + '.min.js'))
-	    .pipe(buffer())
-	    .pipe(plugins.uglify())
-	    .on('error', catchError)
-	    .pipe(gulp.dest('./dist'))
-
-}
-
-const styles = function() {
-
-	gulp.src('./src/styles/main.scss')
-	    .pipe(plugins.sass())
-	    .on('error', catchError)
-	    .pipe(plugins.rename((path) => path.basename = name + '.min'))
-	    .pipe(plugins.autoprefixer('last 2 version', '> 1%'))
-	    .pipe(plugins.minifyCss())
-	    .pipe(gulp.dest('./dist'))
-
-}
-
-const watch = function() {
-
-	gulp.watch('./src/styles/**/*.scss', ['styles'])
-	gulp.watch('./src/scripts/**/*.js', ['scripts'])
-
-}
+const watch = tasks.watch('./src/**/*.[scss, js]', ['scripts', 'styles'])
 
 gulp.task('scripts', scripts)
 gulp.task('styles', styles)
