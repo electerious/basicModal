@@ -24,7 +24,7 @@ Tested with the latest versions of [Mozilla Firefox](https://www.mozilla.org/en-
 	- [Show](#show)
 	- [Error](#error)
 	- [Visible](#visible)
-	- [Action & Cancel](#action-&-cancel)
+	- [Action & Cancel](#action--cancel)
 	- [Reset](#reset)
 	- [Get Values](#get-values)
 	- [Close](#close)
