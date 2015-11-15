@@ -156,7 +156,7 @@ basicModal comes with a handful of handy functions. Below are all of them along 
 The most important function of basicModal. Call `show` to show a modal. The `object` you pass to the function includes all the information about the modal. Take a look at the demos above to get a feeling of the capabilities.
 
 ```ts
-basicModal.show(options: Object)
+basicModal.show(options: object)
 ```
 
 ### Error
@@ -200,7 +200,7 @@ basicModal.reset() : boolean
 The following function returns an object, which includes all input-values from the current modal.
 
 ```ts
-basicModal.getValues() : Object
+basicModal.getValues() : object
 ```
 
 ### Close
