@@ -21,6 +21,13 @@ Tested with the latest versions of [Mozilla Firefox](https://www.mozilla.org/en-
 	- [Prompt](#prompt)
 	- [Input](#input)
 - [Functions](#functions)
+	- [Show](#show)
+	- [Error](#error)
+	- [Visible](#visible)
+	- [Action & Cancel](#action-&-cancel)
+	- [Reset](#reset)
+	- [Get Values](#get-values)
+	- [Close](#close)
 - [Options](#options)
 
 ## Demos
@@ -142,7 +149,67 @@ basicModal.show({
 
 ## Functions
 
-You can find a list of available functions [on our site](http://basicmodal.electerious.com/#functions).
+basicModal comes with a handful of handy functions. Below are all of them along with a short description.
+
+### Show
+
+The most important function of basicModal. Call `show` to show a modal. The `object` you pass to the function includes all the information about the modal. Take a look at the demos above to get a feeling of the capabilities.
+
+```ts
+basicModal.show(options: object)
+```
+
+### Error
+
+Use the `error`-function to highlight invalid input. This function can only be used when the modal has input elements. Each input needs a `name` attribute like shown in the example above. The input with the matching attribute will be marked red and the modal will shake to signal an error. This function also executes the `reset` function, to remove previous errors and to reactive the buttons.
+
+```ts
+basicModal.error(nameAttribute: string)
+```
+
+### Visible
+
+Check if there's a visible modal. Returns `true` when a modal is visible and `false` otherwise.
+
+```ts
+basicModal.visible() : boolean
+```
+
+### Action & Cancel
+
+You can trigger the buttons of the modal manually if wanted. Triggering a button is equal to clicking them.
+
+```ts
+basicModal.action() : boolean
+```
+
+```ts
+basicModal.cancel() : boolean
+```
+
+### Reset
+
+Buttons can only be pressed once to avoid multi-executed functions. Use reset if you want to reactive the buttons or to reset the highlighted input errors.
+
+```ts
+basicModal.reset() : boolean
+```
+
+### Get Values
+
+The following function returns an object, which includes all input-values from the current modal.
+
+```ts
+basicModal.getValues() : object
+```
+
+### Close
+
+And finally: Close the modal. You can force close a modal by passing true to the function. This is required when the modal was created with a negative closable property.
+
+```ts
+basicModal.close(forceClose: boolean) : boolean
+```
 
 ## Options
 
