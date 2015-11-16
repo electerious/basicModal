@@ -50,6 +50,8 @@
 
 	<a href="#" class="button input">Input</a>
 
+	<a href="#" class="button select">Select</a>
+
 	<a href="#" class="button login">Login</a>
 
 	<script src="../dist/basicModal.min.js"></script>
@@ -134,6 +136,27 @@
 			}
 		}
 
+		var select = {
+			body: '<p>This type of modal can be used to ask the user questions.</p><select name="options"><option disabled selected>Choose an option...</option><option>Option A</option><option>Option B</option></select>',
+			buttons: {
+				cancel: {
+					title: 'Cancel',
+					fn: basicModal.close
+				},
+				action: {
+					title: 'Continue',
+					fn: function(data) {
+
+						if (data.options==='Choose an option...') return basicModal.error('options')
+
+						console.log(data)
+						basicModal.close()
+
+					}
+				}
+			}
+		}
+
 		var login = {
 			body: '<p style="margin: 5% 0 14%; color: #666;"><strong style="display: block; margin: 0 0 5%; color: #444; text-transform: uppercase; letter-spacing: 2px;">Login</strong>Login with username "admin" and password "1234". Invalid input will be highlighted.</p><input class="basicModal__text" type="text" placeholder="username" name="username"><input class="basicModal__text" type="password" placeholder="password" name="password">',
 			class: basicModal.THEME.small,
@@ -157,8 +180,8 @@
 							return false
 						}
 
+						console.log(data)
 						basicModal.close()
-						return true
 
 					}
 				}
@@ -173,6 +196,7 @@
 			document.querySelector('a.longAlert').addEventListener('click', function() { basicModal.show(longAlert) })
 			document.querySelector('a.prompt').addEventListener('click', function() { basicModal.show(prompt) })
 			document.querySelector('a.input').addEventListener('click', function() { basicModal.show(input) })
+			document.querySelector('a.select').addEventListener('click', function() { basicModal.show(select) })
 			document.querySelector('a.login').addEventListener('click', function() { basicModal.show(login) })
 
 		})
