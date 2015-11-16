@@ -114,7 +114,8 @@ const build = function(data) {
 export const getValues = function() {
 
 	let values = null,
-	    inputs = dom('input', true)
+	    inputs = dom('input', true),
+	    selects = dom('select', true)
 
 	if (inputs.length>0) {
 
@@ -127,6 +128,26 @@ export const getValues = function() {
 			    value = input.value
 
 			// Store name and value of input
+			if (name!=null) values[name] = value
+
+		})
+
+		// Set value back to null when object empty
+		if (Object.keys(values).length===0) values = null
+
+	}
+
+	if (selects.length>0) {
+
+		values = values || {}
+
+		// Get selected value from all selects
+		each(selects, (select) => {
+
+			let name  = select.getAttribute('name'),
+			    value = select.options[select.selectedIndex].value
+
+			// Store name and value of select
 			if (name!=null) values[name] = value
 
 		})
@@ -179,6 +200,13 @@ const bind = function(data) {
 
 	})
 
+	// Bind selects
+	each(dom('select', true), (select) => {
+
+		select.onchange = select.onblur = function() { this.classList.remove('error') }
+
+	})
+
 	return true
 
 }
@@ -211,6 +239,10 @@ export const show = function(data) {
 	let input = dom('input')
 	if (input!=null) input.select()
 
+	// If there's no input but a select, select it
+	let select = dom('select')
+	if (input==null && select!=null) select.focus()
+
 	// Execute callback when available
 	if (data.callback!=null) data.callback(data)
 
@@ -218,17 +250,18 @@ export const show = function(data) {
 
 }
 
-export const error = function(input) {
+export const error = function(inputOrSelect) {
 
 	// Reactive buttons and remove old errors
 	reset()
 
-	let elem = dom(`input[name='${ input }']`)
+	let elem = dom(`input[name='${ inputOrSelect }']`) || dom(`select[name='${ inputOrSelect }']`)
 
 	elem.classList.add('error')
-	elem.select()
+	if (typeof elem.select==='function') elem.select()
+	else elem.focus()
 
-	// Shake input
+	// Shake input or select
 	dom().classList.remove('basicModal--fadeIn', 'basicModal--shake')
 	setTimeout(() => dom().classList.add('basicModal--shake'), 1)
 
@@ -280,6 +313,9 @@ export const reset = function() {
 	// Remove errors
 	let inputs = dom('input', true)
 	each(inputs, (input) => input.classList.remove('error'))
+
+	let selects = dom('select', true)
+	each(selects, (select) => select.classList.remove('error'))
 
 	return true
 
