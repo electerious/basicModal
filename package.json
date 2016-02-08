@@ -13,6 +13,10 @@
     "window",
     "popup"
   ],
+  "scripts": {
+    "start": "gulp watch",
+    "compile": "gulp"
+  },
   "license": "MIT",
   "homepage": "http://github.com/electerious/basicModal",
   "repository": {
