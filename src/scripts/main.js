@@ -69,8 +69,8 @@ const valid = function(data) {
 
 const build = function(data) {
 
-	let icon = '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M405 136.798l-29.798-29.798-119.202 119.202-119.202-119.202-29.798 29.798 119.202 119.202-119.202 119.202 29.798 29.798 119.202-119.202 119.202 119.202 29.798-29.798-119.202-119.202z"/></svg>',
-	    html = ''
+	let icon = '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><path d="M405 136.798l-29.798-29.798-119.202 119.202-119.202-119.202-29.798 29.798 119.202 119.202-119.202 119.202 29.798 29.798 119.202-119.202 119.202 119.202 29.798-29.798-119.202-119.202z"/></svg>'
+	let html = ''
 
 	html += `
 	        <div class='basicModalContainer basicModalContainer--fadeIn' data-closable='${ data.closable }'>
@@ -115,15 +115,15 @@ const build = function(data) {
 
 export const getValues = function() {
 
-	let values  = {},
-	    inputs  = dom('input[name]', true),
-	    selects = dom('select[name]', true)
+	let values  = {}
+	let inputs  = dom('input[name]', true)
+	let selects = dom('select[name]', true)
 
 	// Get value from all inputs
 	each(inputs, (input) => {
 
-		let name  = input.getAttribute('name'),
-		    value = input.value
+		let name  = input.getAttribute('name')
+		let value = input.value
 
 		// Store name and value of input
 		values[name] = value
@@ -133,8 +133,8 @@ export const getValues = function() {
 	// Get selected value from all selects
 	each(selects, (select) => {
 
-		let name  = select.getAttribute('name'),
-		    value = select.options[select.selectedIndex].value
+		let name  = select.getAttribute('name')
+		let value = select.options[select.selectedIndex].value
 
 		// Store name and value of select
 		values[name] = value
