@@ -11,6 +11,12 @@
     "window",
     "popup"
   ],
+  "ignore": [
+    "**/.*",
+    "demos",
+    "gulpfile.js",
+    "package.json"
+  ],
   "license": "MIT",
   "homepage": "http://github.com/electerious/basicModal",
   "repository": {
