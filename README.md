@@ -67,7 +67,7 @@ bower install basicModal
 npm install basicmodal
 ```
 
-Include the CSS-file in the `head` and the JS-file at the end of your `body`:
+Include the CSS-file in the `head` and the JS-file at the end of your `body`…
 
 ```html
 <link rel="stylesheet" href="dist/basicModal.min.css">
@@ -76,10 +76,10 @@ Include the CSS-file in the `head` and the JS-file at the end of your `body`:
 <script src="dist/basicModal.min.js"></script>
 ```
 
-Skip the JS-file if you want to use basicModal as module together with [Browserify](http://browserify.org):
+…or skip the JS-file and use basicModal as a module:
 
 ```js
-let basicModal = require('basicmodal')
+const basicModal = require('basicmodal')
 ```
 
 ## How to use
