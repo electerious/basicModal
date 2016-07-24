@@ -4,7 +4,10 @@
     "Tobias Reich <tobias@electerious.com>"
   ],
   "description": "Easy-to-use modal window for your website or webapp",
-  "main": "dist/basicModal.min.js",
+  "main": [
+    "dist/basicModal.min.css",
+    "dist/basicModal.min.js"
+  ],
   "keywords": [
     "modal",
     "js",
