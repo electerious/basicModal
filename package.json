@@ -18,7 +18,7 @@
     "compile": "gulp"
   },
   "license": "MIT",
-  "homepage": "http://github.com/electerious/basicModal",
+  "homepage": "https://github.com/electerious/basicModal",
   "repository": {
     "type": "git",
     "url": "https://github.com/electerious/basicModal.git"
