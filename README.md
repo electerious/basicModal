@@ -2,7 +2,7 @@
 
 Easy-to-use dialog system for modern web-apps.
 
-![Modal Screenshot](https://l.electerious.com/uploads/big/7159e3679c7f52dd5be899cc476c2e72.png)
+![Modal Screenshot](https://raw.githubusercontent.com/raghav71094/basicModal/861a3bd3e55dafcc7f03a50f20fcf1ee0b9eae09/demos/screenshot.png)
 
 basicModal is a dialog-system for modern web-apps. It includes everything you need to display information, ask questions or request input from the user. Dialogs can be chained, so you can easily build a setup-assistant or show messages in a predefined order. Invalid input can be highlighted and handled using the included function.
 
