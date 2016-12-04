@@ -16,7 +16,7 @@ Tested with the latest versions of [Mozilla Firefox](https://www.mozilla.org/en-
 - [Features](#features)
 - [Requirements](#requirements)
 - [Setup](#setup)
-- [How to use](#how-to-use)
+- [Usage](#usage)
 	- [Alert](#alert)
 	- [Prompt](#prompt)
 	- [Input](#input)
@@ -82,7 +82,7 @@ Include the CSS file in the `head` tag and the JS file at the end of your `body`
 const basicModal = require('basicmodal')
 ```
 
-## How to use
+## Usage
 
 ### Alert
 
