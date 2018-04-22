@@ -1,4 +1,4 @@
-# basicModal
+# [Deprecated] basicModal
 
 Easy-to-use dialog system for modern web-apps.
 
